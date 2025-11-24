@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorrideX | Next-Gen Isotope Energy</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #050b14;
+            --bg-panel: #0f172a;
+            --primary: #00f0ff; /* Neon Cyan */
+            --secondary: #7000ff; /* Plasma Purple */
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 240, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-tech: 'Orbitron', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, .tech-font { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
+        p { margin-bottom: 1.5rem; color: var(--text-muted); }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(5, 11, 20, 0.9);
+            backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border);
+        }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: #fff; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .btn-cta {
+            background: transparent; border: 1px solid var(--primary); color: var(--primary);
+            padding: 10px 20px; font-family: var(--font-tech); cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; font-size: 0.8rem;
+        }
+        .btn-cta:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,240,255,0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;
+            animation: pulse 4s infinite alternate;
+        }
+        @keyframes pulse { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
+        
+        .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; }
+
+        /* --- GRID & CARDS --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--bg-panel); padding: 30px; border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
+        .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
+
+        /* --- TECH SPECS TABLE --- */
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .specs-table td, .specs-table th { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; }
+        .specs-table th { color: var(--primary); font-family: var(--font-tech); width: 40%; }
+        .specs-table td { color: #fff; }
+
+        /* --- DIAGRAM SIMULATION --- */
+        .diagram-box {
+            border: 1px dashed var(--border); padding: 40px; text-align: center; margin: 40px 0;
+            background: radial-gradient(circle at center, rgba(0,240,255,0.05), transparent);
+        }
+        .flow-step { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary); color: var(--primary); margin: 0 10px; border-radius: 20px; font-size: 0.8rem; }
+        .arrow { display: inline-block; color: var(--text-muted); }
+
+        /* --- FORM --- */
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333;
+            color: #fff; margin-bottom: 15px; font-family: var(--font-main);
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); }
+        .form-group { max-width: 600px; margin: 0 auto; }
+
+        /* --- FOOTER --- */
+        footer { padding: 50px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid #333; }
+        .footer-links { margin-top: 20px; }
+        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
+        .footer-links a:hover { color: #fff; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified for mobile MVP */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-wrap">
+            <div class="logo">TORRIDE<span>X</span></div>
+            <ul class="nav-links">
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#tech">Technology</a></li>
+                <li><a href="#specs">Specs</a></li>
+                <li><a href="#safety">Safety</a></li>
+            </ul>
+            <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Invest Now</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="hero-subtitle">POWERING THE UNREACHABLE</span>
+            <h1>Энергия без топлива.<br>На десятилетия.</h1>
+            <p style="max-width: 600px; margin: 0 auto 30px auto;">
+                Первый в мире твердофазный плазменный генератор на основе управляемого изотопного распада. 
+                Независимость от солнца, ветра и инфраструктуры.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button class="btn-cta" style="background: var(--primary); color: #000;">Технология</button>
+                <button class="btn-cta">Whitepaper</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div class="container">
+            <h2>The Vision</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">∞</div>
+                    <h3>Полная автономность</h3>
+                    <p>Электричество там, где другие источники невозможны: глубины океана, Арктика, космос.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Нулевое обслуживание</h3>
+                    <p>Система "поставил и забыл". Никакой дозаправки, смазки или замены компонентов в течение 10-30 лет.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Масштабируемость</h3>
+                    <p>Модульная архитектура позволяет собирать каскады от 10 Вт для сенсоров до 3 кВт для жилых модулей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <div class="container">
+            <h2>The Technology</h2>
+            <p>TorrideX преобразует энергию распада в электричество через управляемую плазму и электростатическое ускорение. Без турбин. Без пара. Только физика.</p>
+            
+            <div class="diagram-box">
+                <span class="flow-step">Изотоп (Am-241)</span>
+                <span class="arrow">⟶</span>
+                <span class="flow-step">Ионизация Газа</span>
+                <span class="arrow">⟶</span>
+                <span class="flow-step">Плазменный Поток</span>
+                <span class="arrow">⟶</span>
+                <span class="flow-step">Индукция</span>
+                <span class="arrow">⟶</span>
+                <span class="flow-step">Ток</span>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>1. Источник</h3>
+                    <p>Стабильные альфа/бета эмиттеры (Америций-241, Стронций-90) в многослойной защитной капсуле.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Ускорение</h3>
+                    <p>Сегментированные электростатические поля разгоняют ионы плазмы, создавая направленный поток.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Генерация</h3>
+                    <p>Вмороженное магнитное поле движущейся плазмы наводит ток в индукционных катушках.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+                <table class="specs-table">
+                    <tr>
+                        <th>Выходная мощность (Модуль)</th>
+                        <td>10 Вт — 3000+ Вт</td>
+                    </tr>
+                    <tr>
+                        <th>Срок службы</th>
+                        <td>20-30+ лет (в зависимости от изотопа)</td>
+                    </tr>
+                    <tr>
+                        <th>Выходное напряжение</th>
+                        <td>12V / 24V / 48V DC (Configurable)</td>
+                    </tr>
+                    <tr>
+                        <th>Охлаждение</th>
+                        <td>Пассивное (радиаторного типа)</td>
+                    </tr>
+                    <tr>
+                        <th>Шум / Вибрация</th>
+                        <td>0 дБ / 0 мм/с</td>
+                    </tr>
+                    <tr>
+                        <th>Рабочая температура</th>
+                        <td>от -60°C до +120°C</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety">
+        <div class="container">
+            <h2>Safety & Compliance</h2>
+            <div class="grid-3">
+                <div class="card" style="border-color: var(--secondary);">
+                    <h3>Защита</h3>
+                    <p>Герметичная капсула устойчива к ударам, коррозии и экстремальным температурам.</p>
+                </div>
+                <div class="card" style="border-color: var(--secondary);">
+                    <h3>Излучение</h3>
+                    <p>Использование альфа-эмиттеров гарантирует, что излучение полностью блокируется корпусом.</p>
+                </div>
+                <div class="card" style="border-color: var(--secondary);">
+                    <h3>Регулирование</h3>
+                    <p>Разработка ведется в соответствии со стандартами NRC и IAEA. Полная traceability каждого модуля.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="invest">
+        <div class="container" style="text-align: center;">
+            <h2>Стать Инвестором</h2>
+            <p>Присоединяйтесь к революции в автономной энергетике. Оставьте заявку для получения Pitch Deck.</p>
+            
+            <form class="contact-form form-group" onsubmit="event.preventDefault(); alert('Спасибо! В реальной версии данные отправятся на сервер.');">
+                <input type="text" placeholder="Ваше Имя / Название Фонда" required>
+                <input type="email" placeholder="Корпоративный Email" required>
+                <select style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
+                    <option>Частный инвестор</option>
+                    <option>Venture Capital</option>
+                    <option>Индустриальный партнер</option>
+                    <option>Пресса</option>
+                </select>
+                <textarea rows="4" placeholder="Сообщение или вопрос..."></textarea>
+                <button type="submit" class="btn-cta" style="width: 100%;">Запросить Доступ</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px;">TORRIDE<span>X</span></div>
+            <p>&copy; 2025 TorrideX Energy Systems. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Risk Disclosures</a>
+                <a href="#">Legal</a>
+            </div>
+            <p style="margin-top: 20px; color: #555; font-size: 0.7rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                DISCLAIMER: Продукт находится на стадии разработки. Представленные данные основаны на теоретических моделях и лабораторных тестах прототипов. Инвестиции в DeepTech сопряжены с рисками.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
