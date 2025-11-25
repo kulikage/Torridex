@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TorrideX - Next-Generation Isotopic Energy Systems. Autonomous power for extreme environments.">
     <title>TorrideX | Next-Gen Isotope Energy</title>
     <style>
         /* --- CSS VARIABLES & RESET --- */
@@ -91,6 +92,8 @@
         .diagram-box {
             border: 1px dashed var(--border); padding: 40px; text-align: center; margin: 40px 0;
             background: radial-gradient(circle at center, rgba(0,240,255,0.05), transparent);
+            overflow-x: auto;
+            white-space: nowrap;
         }
         .flow-step { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary); color: var(--primary); margin: 0 10px; border-radius: 20px; font-size: 0.8rem; }
         .arrow { display: inline-block; color: var(--text-muted); }
@@ -112,7 +115,8 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplified for mobile MVP */
+            .nav-links { display: none; } 
+            .diagram-box { padding: 20px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -135,13 +139,13 @@
     <section class="hero">
         <div class="container">
             <span class="hero-subtitle">POWERING THE UNREACHABLE</span>
-            <h1>Энергия без топлива.<br>На десятилетия.</h1>
+            <h1>Zero-Fuel Energy.<br>For Decades.</h1>
             <p style="max-width: 600px; margin: 0 auto 30px auto;">
-                Первый в мире твердофазный плазменный генератор на основе управляемого изотопного распада. 
-                Независимость от солнца, ветра и инфраструктуры.
+                The world's first solid-state plasma generator based on controlled isotopic decay. 
+                Independent of sun, wind, and infrastructure.
             </p>
             <div style="display: flex; gap: 15px; justify-content: center;">
-                <button class="btn-cta" style="background: var(--primary); color: #000;">Технология</button>
+                <button class="btn-cta" style="background: var(--primary); color: #000;" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'})">Our Technology</button>
                 <button class="btn-cta">Whitepaper</button>
             </div>
         </div>
@@ -153,18 +157,18 @@
             <div class="grid-3">
                 <div class="card">
                     <div class="card-icon">∞</div>
-                    <h3>Полная автономность</h3>
-                    <p>Электричество там, где другие источники невозможны: глубины океана, Арктика, космос.</p>
+                    <h3>Total Autonomy</h3>
+                    <p>Electricity where other sources fail: deep oceans, Arctic stations, and space exploration.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🛡️</div>
-                    <h3>Нулевое обслуживание</h3>
-                    <p>Система "поставил и забыл". Никакой дозаправки, смазки или замены компонентов в течение 10-30 лет.</p>
+                    <h3>Zero Maintenance</h3>
+                    <p>"Install and forget." No refueling, no lubrication, and no component replacement for 10-30 years.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">⚡</div>
-                    <h3>Масштабируемость</h3>
-                    <p>Модульная архитектура позволяет собирать каскады от 10 Вт для сенсоров до 3 кВт для жилых модулей.</p>
+                    <h3>Scalability</h3>
+                    <p>Modular architecture allows cascading from 10W for sensors up to 3kW for residential modules.</p>
                 </div>
             </div>
         </div>
@@ -173,32 +177,32 @@
     <section id="tech">
         <div class="container">
             <h2>The Technology</h2>
-            <p>TorrideX преобразует энергию распада в электричество через управляемую плазму и электростатическое ускорение. Без турбин. Без пара. Только физика.</p>
+            <p>TorrideX converts decay energy into electricity via controlled plasma and electrostatic acceleration. No turbines. No steam. Pure physics.</p>
             
             <div class="diagram-box">
-                <span class="flow-step">Изотоп (Am-241)</span>
+                <span class="flow-step">Isotope (Am-241)</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Ионизация Газа</span>
+                <span class="flow-step">Gas Ionization</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Плазменный Поток</span>
+                <span class="flow-step">Plasma Flow</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Индукция</span>
+                <span class="flow-step">Induction</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Ток</span>
+                <span class="flow-step">Electric Current</span>
             </div>
 
             <div class="grid-3">
                 <div class="card">
-                    <h3>1. Источник</h3>
-                    <p>Стабильные альфа/бета эмиттеры (Америций-241, Стронций-90) в многослойной защитной капсуле.</p>
+                    <h3>1. The Source</h3>
+                    <p>Stable alpha/beta emitters (Americium-241, Strontium-90) housed in a multi-layered, shielded capsule.</p>
                 </div>
                 <div class="card">
-                    <h3>2. Ускорение</h3>
-                    <p>Сегментированные электростатические поля разгоняют ионы плазмы, создавая направленный поток.</p>
+                    <h3>2. Acceleration</h3>
+                    <p>Segmented electrostatic fields accelerate plasma ions, creating a directed flow without moving parts.</p>
                 </div>
                 <div class="card">
-                    <h3>3. Генерация</h3>
-                    <p>Вмороженное магнитное поле движущейся плазмы наводит ток в индукционных катушках.</p>
+                    <h3>3. Generation</h3>
+                    <p>The "frozen-in" magnetic field of the moving plasma induces current in the surrounding coils.</p>
                 </div>
             </div>
         </div>
@@ -210,28 +214,28 @@
             <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
                 <table class="specs-table">
                     <tr>
-                        <th>Выходная мощность (Модуль)</th>
-                        <td>10 Вт — 3000+ Вт</td>
+                        <th>Power Output (Per Module)</th>
+                        <td>10 W — 3000+ W</td>
                     </tr>
                     <tr>
-                        <th>Срок службы</th>
-                        <td>20-30+ лет (в зависимости от изотопа)</td>
+                        <th>Operational Lifespan</th>
+                        <td>20-30+ Years (Isotope dependent)</td>
                     </tr>
                     <tr>
-                        <th>Выходное напряжение</th>
+                        <th>Output Voltage</th>
                         <td>12V / 24V / 48V DC (Configurable)</td>
                     </tr>
                     <tr>
-                        <th>Охлаждение</th>
-                        <td>Пассивное (радиаторного типа)</td>
+                        <th>Cooling System</th>
+                        <td>Passive (Radiator type)</td>
                     </tr>
                     <tr>
-                        <th>Шум / Вибрация</th>
-                        <td>0 дБ / 0 мм/с</td>
+                        <th>Noise / Vibration</th>
+                        <td>0 dB / 0 mm/s</td>
                     </tr>
                     <tr>
-                        <th>Рабочая температура</th>
-                        <td>от -60°C до +120°C</td>
+                        <th>Operating Temperature</th>
+                        <td>-60°C to +120°C</td>
                     </tr>
                 </table>
             </div>
@@ -243,16 +247,16 @@
             <h2>Safety & Compliance</h2>
             <div class="grid-3">
                 <div class="card" style="border-color: var(--secondary);">
-                    <h3>Защита</h3>
-                    <p>Герметичная капсула устойчива к ударам, коррозии и экстремальным температурам.</p>
+                    <h3>Containment</h3>
+                    <p>Hermetically sealed capsule resistant to extreme impact, corrosion, and temperature fluctuations.</p>
                 </div>
                 <div class="card" style="border-color: var(--secondary);">
-                    <h3>Излучение</h3>
-                    <p>Использование альфа-эмиттеров гарантирует, что излучение полностью блокируется корпусом.</p>
+                    <h3>Radiation</h3>
+                    <p>Alpha-emitter usage ensures radiation is fully blocked by the casing. Safe for transport.</p>
                 </div>
                 <div class="card" style="border-color: var(--secondary);">
-                    <h3>Регулирование</h3>
-                    <p>Разработка ведется в соответствии со стандартами NRC и IAEA. Полная traceability каждого модуля.</p>
+                    <h3>Regulation</h3>
+                    <p>Designed in accordance with NRC and IAEA standards. Full traceability for every module.</p>
                 </div>
             </div>
         </div>
@@ -260,20 +264,20 @@
 
     <section id="invest">
         <div class="container" style="text-align: center;">
-            <h2>Стать Инвестором</h2>
-            <p>Присоединяйтесь к революции в автономной энергетике. Оставьте заявку для получения Pitch Deck.</p>
+            <h2>Invest in TorrideX</h2>
+            <p>Join the revolution in autonomous energy. Request our Pitch Deck.</p>
             
-            <form class="contact-form form-group" onsubmit="event.preventDefault(); alert('Спасибо! В реальной версии данные отправятся на сервер.');">
-                <input type="text" placeholder="Ваше Имя / Название Фонда" required>
-                <input type="email" placeholder="Корпоративный Email" required>
+            <form class="contact-form form-group" onsubmit="event.preventDefault(); alert('Thank you. This is a demo form.');">
+                <input type="text" placeholder="Full Name / Fund Name" required>
+                <input type="email" placeholder="Corporate Email" required>
                 <select style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
-                    <option>Частный инвестор</option>
+                    <option>Private Investor</option>
                     <option>Venture Capital</option>
-                    <option>Индустриальный партнер</option>
-                    <option>Пресса</option>
+                    <option>Industrial Partner</option>
+                    <option>Press / Media</option>
                 </select>
-                <textarea rows="4" placeholder="Сообщение или вопрос..."></textarea>
-                <button type="submit" class="btn-cta" style="width: 100%;">Запросить Доступ</button>
+                <textarea rows="4" placeholder="Message or Inquiry..."></textarea>
+                <button type="submit" class="btn-cta" style="width: 100%;">Request Access</button>
             </form>
         </div>
     </section>
@@ -288,8 +292,8 @@
                 <a href="#">Risk Disclosures</a>
                 <a href="#">Legal</a>
             </div>
-            <p style="margin-top: 20px; color: #555; font-size: 0.7rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                DISCLAIMER: Продукт находится на стадии разработки. Представленные данные основаны на теоретических моделях и лабораторных тестах прототипов. Инвестиции в DeepTech сопряжены с рисками.
+            <p style="margin-top: 20px; color: #555; font-size: 0.7rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+                DISCLAIMER: The TorrideX generator is currently under development. All technical specifications presented are based on theoretical models and laboratory prototypes. Investment in DeepTech and nuclear-related technologies involves significant risks, including regulatory hurdles and development delays. This site does not constitute an offer to sell securities.
             </p>
         </div>
     </footer>
