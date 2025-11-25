@@ -263,24 +263,29 @@
     </section>
 
     <section id="invest">
-        <div class="container" style="text-align: center;">
-            <h2>Invest in TorrideX</h2>
-            <p>Join the revolution in autonomous energy. Request our Pitch Deck.</p>
+    <div class="container" style="text-align: center;">
+        <h2>Invest in TorrideX</h2>
+        <p>Join the revolution in autonomous energy. Request our Pitch Deck.</p>
+        
+        <form action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
             
-            <form class="contact-form form-group" onsubmit="event.preventDefault(); alert('Thank you. This is a demo form.');">
-                <input type="text" placeholder="Full Name / Fund Name" required>
-                <input type="email" placeholder="Corporate Email" required>
-                <select style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
-                    <option>Private Investor</option>
-                    <option>Venture Capital</option>
-                    <option>Industrial Partner</option>
-                    <option>Press / Media</option>
-                </select>
-                <textarea rows="4" placeholder="Message or Inquiry..."></textarea>
-                <button type="submit" class="btn-cta" style="width: 100%;">Request Access</button>
-            </form>
-        </div>
-    </section>
+            <input type="text" name="name" placeholder="Full Name / Fund Name" required>
+            
+            <input type="email" name="email" placeholder="Corporate Email" required>
+            
+            <select name="investor_type" style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
+                <option value="Private Investor">Private Investor</option>
+                <option value="Venture Capital">Venture Capital</option>
+                <option value="Industrial Partner">Industrial Partner</option>
+                <option value="Media">Press / Media</option>
+            </select>
+            
+            <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
+            
+            <button type="submit" class="btn-cta" style="width: 100%;">Request Access</button>
+        </form>
+    </div>
+</section>
 
     <footer>
         <div class="container">
