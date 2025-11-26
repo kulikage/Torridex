@@ -48,12 +48,12 @@
         .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: #fff; }
         .logo span { color: var(--primary); }
         .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-trans: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         .btn-cta {
             background: transparent; border: 1px solid var(--primary); color: var(--primary);
             padding: 10px 20px; font-family: var(--font-tech); cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; font-size: 0.8rem;
+            text-trans: uppercase; font-size: 0.8rem;
         }
         .btn-cta:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
 
@@ -65,10 +65,10 @@
         .hero::before {
             content: ''; position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(0,240,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;
+            top: 50%; left: 50%; trans: translate(-50%, -50%); z-index: -1;
             animation: pulse 4s infinite alternate;
         }
-        @keyframes pulse { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
+        @keyframes pulse { 0% { opacity: 0.5; trans: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; trans: translate(-50%, -50%) scale(1.1); } }
         
         .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; }
 
@@ -78,7 +78,7 @@
             background: var(--bg-panel); padding: 30px; border: 1px solid rgba(255,255,255,0.05);
             border-radius: 4px; transition: 0.3s; position: relative; overflow: hidden;
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card:hover { border-color: var(--primary); trans: translateY(-5px); }
         .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
         .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
 
@@ -262,15 +262,14 @@
         </div>
     </section>
 
-    <section id="invest">
+<section id="invest">
     <div class="container" style="text-align: center;">
         <h2>Invest in TorrideX</h2>
         <p>Join the revolution in autonomous energy. Request our Pitch Deck.</p>
         
-        <form action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
+        <form id="contactForm" action="https://formspree.io/f/ТВОЙ_КОД" method="POST" class="contact-form form-group">
             
             <input type="text" name="name" placeholder="Full Name / Fund Name" required>
-            
             <input type="email" name="email" placeholder="Corporate Email" required>
             
             <select name="investor_type" style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
@@ -282,7 +281,9 @@
             
             <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
             
-            <button type="submit" class="btn-cta" style="width: 100%;">Request Access</button>
+            <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%;">Request Access</button>
+            
+            <div id="formStatus" class="form-status"></div>
         </form>
     </div>
 </section>
@@ -303,5 +304,6 @@
         </div>
     </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
