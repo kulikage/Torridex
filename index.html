@@ -47,7 +47,7 @@
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
         .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: #fff; }
         .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links { display: flex; gap: 30px; list-: none; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-trans: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         .btn-cta {
@@ -118,6 +118,41 @@
             .nav-links { display: none; } 
             .diagram-box { padding: 20px; }
         }
+
+<head>
+    <style>
+        /* --- ТВОИ СТАРЫЕ СТИЛИ (TUT UJE EST KOD) --- */
+        :root { --bg-dark: #050b14; ... }
+        body { ... }
+        h1 { ... }
+        /* ... много кода ... */
+        footer { ... }
+
+        /* === ВСТАВЛЯЙ НОВЫЙ КОД СЮДА (ВНИЗ) === */
+
+        /* --- FORM STATUS STYLES --- */
+        .form-status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-family: var(--font-tech);
+            min-height: 20px;
+            transition: 0.3s;
+        }
+        .form-status.success {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+        .form-status.error {
+            color: #ff3333;
+        }
+        .btn-cta:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #333 !important;
+            color: #888 !important;
+            box-shadow: none !important;
+        }
+  
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
