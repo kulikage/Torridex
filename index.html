@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TorrideX - Next-Generation Isotopic Energy Systems. Autonomous power for extreme environments.">
+    <meta name="description" content="TorrideX - Magnetically Enhanced Radioisotope Power Platform. Patent Pending.">
     <title>TorrideX | Next-Gen Isotope Energy</title>
     <style>
         /* --- CSS VARIABLES & RESET --- */
@@ -47,13 +47,13 @@
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
         .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: #fff; }
         .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 30px; list-: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-trans: uppercase; transition: 0.3s; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         .btn-cta {
             background: transparent; border: 1px solid var(--primary); color: var(--primary);
             padding: 10px 20px; font-family: var(--font-tech); cursor: pointer; transition: 0.3s;
-            text-trans: uppercase; font-size: 0.8rem;
+            text-transform: uppercase; font-size: 0.8rem;
         }
         .btn-cta:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
 
@@ -65,12 +65,24 @@
         .hero::before {
             content: ''; position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(0,240,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 50%; left: 50%; trans: translate(-50%, -50%); z-index: -1;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;
             animation: pulse 4s infinite alternate;
         }
-        @keyframes pulse { 0% { opacity: 0.5; trans: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; trans: translate(-50%, -50%) scale(1.1); } }
+        @keyframes pulse { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
         
         .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; }
+
+        /* --- PATENT BADGE (NEW) --- */
+        .patent-badge {
+            display: inline-block;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-family: var(--font-tech);
+            margin-bottom: 20px;
+            background: rgba(112, 0, 255, 0.1);
+        }
 
         /* --- GRID & CARDS --- */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -78,9 +90,13 @@
             background: var(--bg-panel); padding: 30px; border: 1px solid rgba(255,255,255,0.05);
             border-radius: 4px; transition: 0.3s; position: relative; overflow: hidden;
         }
-        .card:hover { border-color: var(--primary); trans: translateY(-5px); }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
         .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
+        .card-tag { 
+            font-size: 0.7rem; color: var(--secondary); text-transform: uppercase; 
+            letter-spacing: 1px; display: block; margin-bottom: 5px; font-weight: bold;
+        }
 
         /* --- TECH SPECS TABLE --- */
         .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -99,12 +115,21 @@
         .arrow { display: inline-block; color: var(--text-muted); }
 
         /* --- FORM --- */
-        .contact-form input, .contact-form textarea {
+        .contact-form input, .contact-form textarea, .contact-form select {
             width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333;
             color: #fff; margin-bottom: 15px; font-family: var(--font-main);
         }
-        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--primary); }
         .form-group { max-width: 600px; margin: 0 auto; }
+
+        /* --- FORM STATUS STYLES --- */
+        .form-status {
+            margin-top: 15px; font-size: 0.9rem; font-family: var(--font-tech);
+            min-height: 20px; transition: 0.3s; text-align: center;
+        }
+        .form-status.success { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
+        .form-status.error { color: #ff3333; }
+        .btn-cta:disabled { opacity: 0.5; cursor: not-allowed; background: #333 !important; color: #888 !important; box-shadow: none !important; }
 
         /* --- FOOTER --- */
         footer { padding: 50px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid #333; }
@@ -118,41 +143,6 @@
             .nav-links { display: none; } 
             .diagram-box { padding: 20px; }
         }
-
-<head>
-    <style>
-        /* --- ТВОИ СТАРЫЕ СТИЛИ (TUT UJE EST KOD) --- */
-        :root { --bg-dark: #050b14; ... }
-        body { ... }
-        h1 { ... }
-        /* ... много кода ... */
-        footer { ... }
-
-        /* === ВСТАВЛЯЙ НОВЫЙ КОД СЮДА (ВНИЗ) === */
-
-        /* --- FORM STATUS STYLES --- */
-        .form-status {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            font-family: var(--font-tech);
-            min-height: 20px;
-            transition: 0.3s;
-        }
-        .form-status.success {
-            color: var(--primary);
-            text-shadow: 0 0 5px var(--primary);
-        }
-        .form-status.error {
-            color: #ff3333;
-        }
-        .btn-cta:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #333 !important;
-            color: #888 !important;
-            box-shadow: none !important;
-        }
-  
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -162,48 +152,52 @@
         <div class="container nav-wrap">
             <div class="logo">TORRIDE<span>X</span></div>
             <ul class="nav-links">
-                <li><a href="#vision">Vision</a></li>
+                <li><a href="#vision">Platform</a></li>
                 <li><a href="#tech">Technology</a></li>
                 <li><a href="#specs">Specs</a></li>
-                <li><a href="#safety">Safety</a></li>
+                <li><a href="#safety">Compliance</a></li>
             </ul>
-            <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Invest Now</button>
+            <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Partner</button>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <span class="hero-subtitle">POWERING THE UNREACHABLE</span>
-            <h1>Zero-Fuel Energy.<br>For Decades.</h1>
+            <div class="patent-badge">PATENT PENDING: US APP. NO. 19/264,855 & 63/946,989</div>
+            
+            <span class="hero-subtitle">MAGNETICALLY ENHANCED PLASMA POWER</span>
+            <h1>Next-Gen Radioisotope<br>Power Platform</h1>
             <p style="max-width: 600px; margin: 0 auto 30px auto;">
-                The world's first solid-state plasma generator based on controlled isotopic decay. 
-                Independent of sun, wind, and infrastructure.
+                The world's first solid-state generator utilizing E×B drift control for high-efficiency isotopic decay conversion.
             </p>
             <div style="display: flex; gap: 15px; justify-content: center;">
                 <button class="btn-cta" style="background: var(--primary); color: #000;" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'})">Our Technology</button>
-                <button class="btn-cta">Whitepaper</button>
+                <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Technical Brief</button>
             </div>
         </div>
     </section>
 
     <section id="vision">
         <div class="container">
-            <h2>The Vision</h2>
+            <h2>Scalable Platform Architecture</h2>
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-icon">∞</div>
-                    <h3>Total Autonomy</h3>
-                    <p>Electricity where other sources fail: deep oceans, Arctic stations, and space exploration.</p>
+                    <span class="card-tag">MICRO (S-SERIES)</span>
+                    <div class="card-icon">🔋</div>
+                    <h3>Sensors & IoT</h3>
+                    <p>Milliwatt-to-Watt class power for medical implants and remote sensors. Replacing chemical batteries with a 10+ year "install and forget" lifecycle.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Zero Maintenance</h3>
-                    <p>"Install and forget." No refueling, no lubrication, and no component replacement for 10-30 years.</p>
+                    <span class="card-tag">REMOTE (P-SERIES)</span>
+                    <div class="card-icon">🛰️</div>
+                    <h3>Space & Defense</h3>
+                    <p>High-performance generators (100W – 1kW). Vibration-free, solid-state reliability superior to mechanical Stirling engines for critical missions.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Scalability</h3>
-                    <p>Modular architecture allows cascading from 10W for sensors up to 3kW for residential modules.</p>
+                    <span class="card-tag">GRID (W-SERIES)</span>
+                    <div class="card-icon">🏭</div>
+                    <h3>Waste-to-Watts</h3>
+                    <p>Grid-scale architecture utilizing spent nuclear fuel as a thermal and ionization source. Transforming a liability into a clean energy asset via MHD conversion.</p>
                 </div>
             </div>
         </div>
@@ -212,32 +206,32 @@
     <section id="tech">
         <div class="container">
             <h2>The Technology</h2>
-            <p>TorrideX converts decay energy into electricity via controlled plasma and electrostatic acceleration. No turbines. No steam. Pure physics.</p>
+            <p>TorrideX utilizes a proprietary Crossed-Field (E×B) topology to steer charged particles, drastically reducing recombination losses and enabling multi-mode energy extraction.</p>
             
             <div class="diagram-box">
-                <span class="flow-step">Isotope</span>
+                <span class="flow-step">Isotope Source</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Gas Ionization</span>
+                <span class="flow-step">Non-Equilibrium Plasma</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Plasma Flow</span>
+                <span class="flow-step">E×B Drift Control</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Induction</span>
+                <span class="flow-step">Multi-Mode Extraction</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Electric Current</span>
+                <span class="flow-step">Power</span>
             </div>
 
             <div class="grid-3">
                 <div class="card">
                     <h3>1. The Source</h3>
-                    <p>Stable alpha/beta emitters (Americium-241, Strontium-90) housed in a multi-layered, shielded capsule.</p>
+                    <p>Radioisotope-induced non-equilibrium plasma within a sealed toroidal chamber. No combustion, no moving parts.</p>
                 </div>
                 <div class="card">
-                    <h3>2. Acceleration</h3>
-                    <p>Segmented electrostatic fields accelerate plasma ions, creating a directed flow without moving parts.</p>
+                    <h3>2. Charge Transport</h3>
+                    <p>Magnetic fields perpendicular to electric fields steer ions into spiral trajectories, suppressing recombination.</p>
                 </div>
                 <div class="card">
-                    <h3>3. Generation</h3>
-                    <p>The "frozen-in" magnetic field of the moving plasma induces current in the surrounding coils.</p>
+                    <h3>3. Hybrid Extraction</h3>
+                    <p>Energy is harvested via direct electrostatic collection (High V) and inductive/capacitive coupling (sealed operation).</p>
                 </div>
             </div>
         </div>
@@ -250,7 +244,7 @@
                 <table class="specs-table">
                     <tr>
                         <th>Power Output (Per Module)</th>
-                        <td>10 W — 3000+ W</td>
+                        <td>10 W — 3000+ W (Scalable)</td>
                     </tr>
                     <tr>
                         <th>Operational Lifespan</th>
@@ -261,12 +255,12 @@
                         <td>12V / 24V / 48V DC (Configurable)</td>
                     </tr>
                     <tr>
-                        <th>Cooling System</th>
-                        <td>Passive (Radiator type)</td>
+                        <th>Scalability</th>
+                        <td>Modular Stacking (Sensors / Space / Grid)</td>
                     </tr>
                     <tr>
                         <th>Noise / Vibration</th>
-                        <td>0 dB / 0 mm/s</td>
+                        <td>0 dB / 0 mm/s (Solid State)</td>
                     </tr>
                     <tr>
                         <th>Operating Temperature</th>
@@ -282,46 +276,47 @@
             <h2>Safety & Compliance</h2>
             <div class="grid-3">
                 <div class="card" style="border-color: var(--secondary);">
-                    <h3>Containment</h3>
-                    <p>Hermetically sealed capsule resistant to extreme impact, corrosion, and temperature fluctuations.</p>
+                    <h3>Multi-Barrier</h3>
+                    <p>The isotope source is encapsulated within a layered containment system designed to prioritize structural integrity.</p>
                 </div>
                 <div class="card" style="border-color: var(--secondary);">
-                    <h3>Radiation</h3>
-                    <p>Alpha-emitter usage ensures radiation is fully blocked by the casing. Safe for transport.</p>
+                    <h3>Shielding</h3>
+                    <p>Engineered housing blocks internal alpha/beta emissions, converting high-energy particles into useful charge carriers.</p>
                 </div>
                 <div class="card" style="border-color: var(--secondary);">
                     <h3>Regulation</h3>
-                    <p>Designed in accordance with NRC and IAEA standards. Full traceability for every module.</p>
+                    <p>Developed with a focus on compliance frameworks (NRC/IAEA standards). Full traceability and lifecycle management.</p>
                 </div>
             </div>
         </div>
     </section>
 
-<section id="invest">
-    <div class="container" style="text-align: center;">
-        <h2>Invest in TorrideX</h2>
-        <p>Join the revolution in autonomous energy. Request our Pitch Deck.</p>
-        
-        <form id="contactForm" action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
+    <section id="invest">
+        <div class="container" style="text-align: center;">
+            <h2>Partner with TorrideX</h2>
+            <p>Join the revolution in autonomous energy. Request our Technical Brief and Pitch Deck.</p>
             
-            <input type="text" name="name" placeholder="Full Name / Fund Name" required>
-            <input type="email" name="email" placeholder="Corporate Email" required>
-            
-            <select name="investor_type" style="width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; margin-bottom: 15px;">
-                <option value="Private Investor">Private Investor</option>
-                <option value="Venture Capital">Venture Capital</option>
-                <option value="Industrial Partner">Industrial Partner</option>
-                <option value="Media">Press / Media</option>
-            </select>
-            
-            <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
-            
-            <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%;">Request Access</button>
-            
-            <div id="formStatus" class="form-status"></div>
-        </form>
-    </div>
-</section>
+            <form id="contactForm" action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
+                
+                <input type="text" name="name" placeholder="Full Name / Fund Name" required>
+                <input type="email" name="email" placeholder="Corporate Email" required>
+                
+                <select name="investor_type" required>
+                    <option value="" disabled selected>Partner Type</option>
+                    <option value="Private Investor">Private Investor</option>
+                    <option value="Venture Capital">Venture Capital</option>
+                    <option value="Industrial Partner">Industrial Partner</option>
+                    <option value="Media">Press / Media</option>
+                </select>
+                
+                <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
+                
+                <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%;">Request Technical Brief</button>
+                
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
