@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TorrideX - Magnetically Enhanced Radioisotope Power Platform. Patent Pending.">
+    <meta name="description" content="TorrideX - Triple Cascade Radioisotope Power Platform. Patent Pending.">
     <title>TorrideX | Next-Gen Isotope Energy</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+        /* --- CSS VARIABLES & RESET (LIGHT DEEP-TECH THEME) --- */
         :root {
-            --bg-dark: #050b14;
-            --bg-panel: #0f172a;
-            --primary: #00f0ff; /* Neon Cyan */
-            --secondary: #7000ff; /* Plasma Purple */
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --border: rgba(0, 240, 255, 0.1);
+            --bg-dark: #f4f7f9; /* Clean light gray background */
+            --bg-panel: #ffffff; /* White cards */
+            --primary: #026fb8; /* Professional Deep-Tech Blue */
+            --secondary: #e65100; /* Thermal/Energy Orange accent */
+            --text-main: #1e293b; /* Dark slate text for readability */
+            --text-muted: #475569; /* Muted slate */
+            --border: #cbd5e1; /* Light gray border */
             --font-main: 'Inter', sans-serif;
             --font-tech: 'Orbitron', sans-serif;
         }
@@ -31,48 +31,42 @@
 
         /* --- TYPOGRAPHY --- */
         h1, h2, h3, .tech-font { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(90deg, #0f172a, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
         p { margin-bottom: 1.5rem; color: var(--text-muted); }
 
         /* --- LAYOUT --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section { padding: 80px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; background: rgba(5, 11, 20, 0.9);
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: #fff; }
+        .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: var(--text-main); }
         .logo span { color: var(--primary); }
         .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary); }
         .btn-cta {
             background: transparent; border: 1px solid var(--primary); color: var(--primary);
             padding: 10px 20px; font-family: var(--font-tech); cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; font-size: 0.8rem;
+            text-transform: uppercase; font-size: 0.8rem; border-radius: 4px; font-weight: 600;
         }
-        .btn-cta:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+        .btn-cta:hover { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(2, 111, 184, 0.3); }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative; overflow: hidden;
+            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-dark) 100%);
         }
-        .hero::before {
-            content: ''; position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,240,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;
-            animation: pulse 4s infinite alternate;
-        }
-        @keyframes pulse { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
-        
-        .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; }
+        .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; letter-spacing: 2px; }
 
-        /* --- PATENT BADGE (NEW) --- */
+        /* --- PATENT BADGE --- */
         .patent-badge {
             display: inline-block;
             border: 1px solid var(--secondary);
@@ -81,61 +75,66 @@
             font-size: 0.75rem;
             font-family: var(--font-tech);
             margin-bottom: 20px;
-            background: rgba(112, 0, 255, 0.1);
+            background: rgba(230, 81, 0, 0.05);
+            border-radius: 4px;
+            font-weight: bold;
         }
 
         /* --- GRID & CARDS --- */
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card {
-            background: var(--bg-panel); padding: 30px; border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 4px; transition: 0.3s; position: relative; overflow: hidden;
+            background: var(--bg-panel); padding: 30px; border: 1px solid var(--border);
+            border-radius: 8px; transition: 0.3s; position: relative; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
-        .card-icon { font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .card h3 { color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem; }
         .card-tag { 
-            font-size: 0.7rem; color: var(--secondary); text-transform: uppercase; 
-            letter-spacing: 1px; display: block; margin-bottom: 5px; font-weight: bold;
+            font-size: 0.75rem; color: var(--primary); text-transform: uppercase; 
+            letter-spacing: 1px; display: block; margin-bottom: 15px; font-weight: bold;
+        }
+
+        /* --- 3D RENDER PLACEHOLDERS (NEW) --- */
+        .render-placeholder {
+            width: 100%; height: 200px; background: #e2e8f0; border: 1px dashed #94a3b8;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            border-radius: 4px; margin-bottom: 20px; color: #64748b; font-family: var(--font-tech);
+            font-size: 0.8rem;
         }
 
         /* --- TECH SPECS TABLE --- */
         .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .specs-table td, .specs-table th { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; }
-        .specs-table th { color: var(--primary); font-family: var(--font-tech); width: 40%; }
-        .specs-table td { color: #fff; }
+        .specs-table td, .specs-table th { padding: 15px; border-bottom: 1px solid var(--border); text-align: left; }
+        .specs-table th { color: var(--primary); font-family: var(--font-tech); width: 40%; font-weight: 600;}
+        .specs-table td { color: var(--text-main); font-weight: 500;}
 
         /* --- DIAGRAM SIMULATION --- */
         .diagram-box {
-            border: 1px dashed var(--border); padding: 40px; text-align: center; margin: 40px 0;
-            background: radial-gradient(circle at center, rgba(0,240,255,0.05), transparent);
-            overflow-x: auto;
-            white-space: nowrap;
+            border: 1px solid var(--border); padding: 40px; text-align: center; margin: 40px 0;
+            background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            overflow-x: auto; white-space: nowrap;
         }
-        .flow-step { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary); color: var(--primary); margin: 0 10px; border-radius: 20px; font-size: 0.8rem; }
-        .arrow { display: inline-block; color: var(--text-muted); }
+        .flow-step { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary); background: rgba(2, 111, 184, 0.05); color: var(--primary); margin: 0 10px; border-radius: 4px; font-size: 0.9rem; font-weight: 600;}
+        .arrow { display: inline-block; color: var(--text-muted); font-weight: bold;}
 
         /* --- FORM --- */
         .contact-form input, .contact-form textarea, .contact-form select {
-            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333;
-            color: #fff; margin-bottom: 15px; font-family: var(--font-main);
+            width: 100%; padding: 15px; background: #f8fafc; border: 1px solid var(--border);
+            color: var(--text-main); margin-bottom: 15px; font-family: var(--font-main); border-radius: 4px;
         }
-        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--primary); }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 3px rgba(2, 111, 184, 0.1); }
         .form-group { max-width: 600px; margin: 0 auto; }
 
-        /* --- FORM STATUS STYLES --- */
-        .form-status {
-            margin-top: 15px; font-size: 0.9rem; font-family: var(--font-tech);
-            min-height: 20px; transition: 0.3s; text-align: center;
-        }
-        .form-status.success { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
-        .form-status.error { color: #ff3333; }
-        .btn-cta:disabled { opacity: 0.5; cursor: not-allowed; background: #333 !important; color: #888 !important; box-shadow: none !important; }
-
+        /* --- FORM STATUS --- */
+        .form-status { margin-top: 15px; font-size: 0.9rem; font-family: var(--font-tech); min-height: 20px; transition: 0.3s; text-align: center; }
+        .form-status.success { color: var(--primary); }
+        .form-status.error { color: #dc2626; }
+        
         /* --- FOOTER --- */
-        footer { padding: 50px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid #333; }
+        footer { padding: 50px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid var(--border); background: #ffffff;}
         .footer-links { margin-top: 20px; }
-        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
-        .footer-links a:hover { color: #fff; }
+        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; font-weight: 500;}
+        .footer-links a:hover { color: var(--primary); }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
@@ -144,7 +143,7 @@
             .diagram-box { padding: 20px; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -165,13 +164,13 @@
         <div class="container">
             <div class="patent-badge">PATENT PENDING: US APP. NO. 19/264,855 & 63/946,989</div>
             
-            <span class="hero-subtitle">MAGNETICALLY ENHANCED PLASMA POWER</span>
-            <h1>Next-Gen Radioisotope<br>Power Platform</h1>
-            <p style="max-width: 600px; margin: 0 auto 30px auto;">
-                The world's first solid-state generator utilizing E×B drift control for high-efficiency isotopic decay conversion.
+            <span class="hero-subtitle">TRIPLE CASCADE PLASMA POWER</span>
+            <h1>Solid-State Direct<br>Energy Conversion</h1>
+            <p style="max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem;">
+                Transforming isotopic decay into electricity through a non-equilibrium plasma environment. Unprecedented 15% to 34% efficiency with zero moving parts.
             </p>
             <div style="display: flex; gap: 15px; justify-content: center;">
-                <button class="btn-cta" style="background: var(--primary); color: #000;" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'})">Our Technology</button>
+                <button class="btn-cta" style="background: var(--primary); color: #fff;" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'})">Our Technology</button>
                 <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Technical Brief</button>
             </div>
         </div>
@@ -182,22 +181,31 @@
             <h2>Scalable Platform Architecture</h2>
             <div class="grid-3">
                 <div class="card">
-                    <span class="card-tag">MICRO (S-SERIES)</span>
-                    <div class="card-icon">🔋</div>
-                    <h3>Sensors & IoT</h3>
-                    <p>Milliwatt-to-Watt class power for medical implants and remote sensors. Replacing chemical batteries with a 10+ year "install and forget" lifecycle.</p>
+                    <span class="card-tag">PHASE 1: TORRIDEX SMALL</span>
+                    <div class="render-placeholder">
+                        [Insert 3D Render:<br>Coaxial Cylinder Prototype]
+                    </div>
+                    <h3>Micro / IoT</h3>
+                    <p><strong>Form Factor:</strong> Coaxial Cylinder<br><strong>Target Efficiency:</strong> ~15.8%</p>
+                    <p>Milliwatt-to-Watt class power. Utilizing pure electrostatic DC extraction + TEG for 10+ year "install and forget" sensors.</p>
                 </div>
                 <div class="card">
-                    <span class="card-tag">REMOTE (P-SERIES)</span>
-                    <div class="card-icon">🛰️</div>
+                    <span class="card-tag">PHASE 2: TORRIDEX POWER</span>
+                    <div class="render-placeholder">
+                        [Insert 3D Render:<br>E×B Toroidal Chamber]
+                    </div>
                     <h3>Space & Defense</h3>
-                    <p>High-performance generators (100W – 1kW). Vibration-free, solid-state reliability superior to mechanical Stirling engines for critical missions.</p>
+                    <p><strong>Form Factor:</strong> E×B Torus<br><strong>Target Efficiency:</strong> ~30.0%</p>
+                    <p>High-performance generators (100W–1kW). Using Hall-effect drift and inductive AC harvesting for vibration-free, solid-state reliability.</p>
                 </div>
                 <div class="card">
-                    <span class="card-tag">GRID (W-SERIES)</span>
-                    <div class="card-icon">🏭</div>
-                    <h3>Waste-to-Watts</h3>
-                    <p>Grid-scale architecture utilizing spent nuclear fuel as a thermal and ionization source. Transforming a liability into a clean energy asset via MHD conversion.</p>
+                    <span class="card-tag">PHASE 3: TORRIDEX WASTE</span>
+                    <div class="render-placeholder">
+                        [Insert 3D Render:<br>Plasma Blanket on Cask]
+                    </div>
+                    <h3>Industrial Waste-to-Watts</h3>
+                    <p><strong>Form Factor:</strong> Plasma Blanket<br><strong>Target Efficiency:</strong> ~34.0%</p>
+                    <p>Grid-scale architecture utilizing spent nuclear fuel (SNF) as a radiation/heat source. Combining Thermionic emission with thermal turbines.</p>
                 </div>
             </div>
         </div>
@@ -206,32 +214,30 @@
     <section id="tech">
         <div class="container">
             <h2>The Technology</h2>
-            <p>TorrideX utilizes a proprietary Crossed-Field (E×B) topology to steer charged particles, drastically reducing recombination losses and enabling multi-mode energy extraction.</p>
+            <p>TorrideX bypasses the thermodynamic limits of traditional RTGs by harvesting energy across three distinct domains, preventing ionization energy from degrading into waste heat.</p>
             
             <div class="diagram-box">
                 <span class="flow-step">Isotope Source</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Non-Equilibrium Plasma</span>
+                <span class="flow-step">Plasma Environment</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">E×B Drift Control</span>
+                <span class="flow-step">Triple Cascade Extraction</span>
                 <span class="arrow">⟶</span>
-                <span class="flow-step">Multi-Mode Extraction</span>
-                <span class="arrow">⟶</span>
-                <span class="flow-step">Power</span>
+                <span class="flow-step">High-Efficiency Power</span>
             </div>
 
             <div class="grid-3">
                 <div class="card">
-                    <h3>1. The Source</h3>
-                    <p>Radioisotope-induced non-equilibrium plasma within a sealed toroidal chamber. No combustion, no moving parts.</p>
+                    <h3>1. The Chamber</h3>
+                    <p>Radioisotope-induced non-equilibrium plasma within a modular sealed chamber (cylindrical, toroidal, or annular). No combustion, no complex moving parts.</p>
                 </div>
                 <div class="card">
-                    <h3>2. Charge Transport</h3>
-                    <p>Magnetic fields perpendicular to electric fields steer ions into spiral trajectories, suppressing recombination.</p>
+                    <h3>2. E×B Transport</h3>
+                    <p>Magnetic fields perpendicular to electric fields accelerate electrons to 400 m/s, suppressing recombination and generating a powerful Hall current.</p>
                 </div>
                 <div class="card">
-                    <h3>3. Hybrid Extraction</h3>
-                    <p>Energy is harvested via direct electrostatic collection (High V) and inductive/capacitive coupling (sealed operation).</p>
+                    <h3 style="color: var(--secondary);">3. Triple Cascade</h3>
+                    <p>Energy is completely harvested via direct electrostatics (DC), inductive AC coupling, and advanced thermoelectrics for unprecedented system efficiency.</p>
                 </div>
             </div>
         </div>
@@ -240,31 +246,31 @@
     <section id="specs">
         <div class="container">
             <h2>Technical Specifications</h2>
-            <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+            <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
                 <table class="specs-table">
                     <tr>
+                        <th>System Efficiency</th>
+                        <td style="font-weight: bold; color: var(--secondary);">15% to 34% (Depending on cascade configuration)</td>
+                    </tr>
+                    <tr>
                         <th>Power Output (Per Module)</th>
-                        <td>10 W — 3000+ W (Scalable)</td>
+                        <td>10 W — 2+ kW (Scalable per module)</td>
                     </tr>
                     <tr>
                         <th>Operational Lifespan</th>
-                        <td>20-30+ Years (Isotope dependent)</td>
+                        <td>20-50+ Years (Isotope dependent)</td>
                     </tr>
                     <tr>
-                        <th>Output Voltage</th>
-                        <td>12V / 24V / 48V DC (Configurable)</td>
+                        <th>Energy Extraction Modes</th>
+                        <td>Direct DC, Inductive AC, Thermoelectric/Thermal</td>
                     </tr>
                     <tr>
                         <th>Scalability</th>
-                        <td>Modular Stacking (Sensors / Space / Grid)</td>
+                        <td>Modular Stacking (IoT / Space / SNF Casks)</td>
                     </tr>
                     <tr>
                         <th>Noise / Vibration</th>
-                        <td>0 dB / 0 mm/s (Solid State)</td>
-                    </tr>
-                    <tr>
-                        <th>Operating Temperature</th>
-                        <td>-60°C to +120°C</td>
+                        <td>0 dB / 0 mm/s (Pure Solid State models)</td>
                     </tr>
                 </table>
             </div>
@@ -275,17 +281,17 @@
         <div class="container">
             <h2>Safety & Compliance</h2>
             <div class="grid-3">
-                <div class="card" style="border-color: var(--secondary);">
+                <div class="card">
                     <h3>Multi-Barrier</h3>
-                    <p>The isotope source is encapsulated within a layered containment system designed to prioritize structural integrity.</p>
+                    <p>The isotope source is encapsulated within a layered containment system designed to prioritize structural integrity in extreme environments.</p>
                 </div>
-                <div class="card" style="border-color: var(--secondary);">
+                <div class="card">
                     <h3>Shielding</h3>
-                    <p>Engineered housing blocks internal alpha/beta emissions, converting high-energy particles into useful charge carriers.</p>
+                    <p>Engineered housing blocks internal emissions, utilizing high-energy particles to ionize the heavy Xenon working gas before they reach the outer wall.</p>
                 </div>
-                <div class="card" style="border-color: var(--secondary);">
+                <div class="card">
                     <h3>Regulation</h3>
-                    <p>Developed with a focus on compliance frameworks (NRC/IAEA standards). Full traceability and lifecycle management.</p>
+                    <p>Developed with a strict focus on compliance frameworks (NRC/IAEA standards). Full traceability and end-of-life cycle management.</p>
                 </div>
             </div>
         </div>
@@ -294,24 +300,23 @@
     <section id="invest">
         <div class="container" style="text-align: center;">
             <h2>Partner with TorrideX</h2>
-            <p>Join the revolution in autonomous energy. Request our Technical Brief and Pitch Deck.</p>
+            <p style="max-width: 600px; margin: 0 auto 30px auto;">Join the revolution in autonomous energy. Request our Pitch Deck, Technical Brief, and Prototyping Roadmap.</p>
             
             <form id="contactForm" action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
-                
                 <input type="text" name="name" placeholder="Full Name / Fund Name" required>
                 <input type="email" name="email" placeholder="Corporate Email" required>
                 
                 <select name="investor_type" required>
                     <option value="" disabled selected>Partner Type</option>
                     <option value="Private Investor">Private Investor</option>
-                    <option value="Venture Capital">Venture Capital</option>
-                    <option value="Industrial Partner">Industrial Partner</option>
+                    <option value="Venture Capital / Accelerator">Venture Capital / Accelerator</option>
+                    <option value="Industrial Partner">Industrial Partner (Aerospace / Nuclear)</option>
                     <option value="Media">Press / Media</option>
                 </select>
                 
                 <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
                 
-                <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%;">Request Technical Brief</button>
+                <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%; background: var(--primary); color: #fff;">Request Pitch Deck</button>
                 
                 <div id="formStatus" class="form-status"></div>
             </form>
@@ -320,16 +325,16 @@
 
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px;">TORRIDE<span>X</span></div>
-            <p>&copy; 2025 TorrideX Energy Systems. All rights reserved.</p>
+            <div class="logo" style="margin-bottom: 20px; color: var(--text-muted);">TORRIDE<span>X</span></div>
+            <p>&copy; 2026 TorrideX Energy Systems. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
                 <a href="risks.html">Risk Disclosures</a>
                 <a href="legal.html">Legal</a>
             </div>
-            <p style="margin-top: 20px; color: #555; font-size: 0.7rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
-                DISCLAIMER: The TorrideX generator is currently under development. All technical specifications presented are based on theoretical models and laboratory prototypes. Investment in DeepTech and nuclear-related technologies involves significant risks, including regulatory hurdles and development delays. This site does not constitute an offer to sell securities.
+            <p style="margin-top: 20px; color: #94a3b8; font-size: 0.7rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+                DISCLAIMER: The TorrideX generator is currently under development. All technical specifications presented are based on mathematical models, patent-pending architectures, and theoretical plasma physics. Investment in DeepTech and nuclear-related technologies involves significant risks, including regulatory hurdles and R&D delays. This site does not constitute an offer to sell securities.
             </p>
         </div>
     </footer>
