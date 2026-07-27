@@ -3,513 +3,1308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TorrideX - Staged Plasma-Mediated Conversion Architecture. Selected platform elements patent pending. Member of NVIDIA Inception.">
-    <title>TorrideX | Simulation-Guided Energy Conversion Platform</title>
+    <meta name="description" content="TorrideX is developing a plasma-assisted thermionic conversion core for persistent autonomous power. The current program is advancing through non-radioactive laboratory validation.">
+    <title>TorrideX | Persistent Power Conversion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- CSS VARIABLES & RESET (LIGHT DEEP-TECH THEME) --- */
         :root {
-            --bg-dark: #f4f7f9;
-            --bg-panel: #ffffff;
-            --primary: #026fb8;
-            --secondary: #e65100;
-            --nvidia-green: #76B900;
-            --text-main: #1e293b;
-            --text-muted: #475569;
-            --border: #cbd5e1;
-            --font-main: 'Inter', sans-serif;
-            --font-tech: 'Orbitron', sans-serif;
+            --bg: #f4f7fa;
+            --panel: #ffffff;
+            --panel-soft: #eef5fa;
+            --ink: #142033;
+            --muted: #526174;
+            --line: #d5dee7;
+            --blue: #026fb8;
+            --blue-dark: #074f80;
+            --orange: #d85a0b;
+            --green: #2b7a4b;
+            --amber: #9a6700;
+            --red: #b42318;
+            --nvidia: #76b900;
+            --shadow: 0 18px 45px rgba(15, 39, 64, 0.08);
+            --radius: 16px;
+            --max: 1180px;
+            --font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --tech: "Orbitron", var(--font);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.6;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font);
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, .tech-font { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(90deg, #0f172a, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary); }
-        p { margin-bottom: 1.5rem; color: var(--text-muted); }
+        a { color: inherit; }
 
-        /* --- LAYOUT --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        img { display: block; max-width: 100%; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
         }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-family: var(--font-tech); font-weight: 700; font-size: 1.5rem; color: var(--text-main); }
-        .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-weight: 600; }
-        .nav-links a:hover { color: var(--primary); }
-        .btn-cta {
-            background: transparent; border: 1px solid var(--primary); color: var(--primary);
-            padding: 10px 20px; font-family: var(--font-tech); cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; font-size: 0.8rem; border-radius: 4px; font-weight: 600;
-        }
-        .btn-cta:hover { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(2, 111, 184, 0.3); }
 
-        /* --- HERO SECTION --- */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--blue);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 26px;
+            height: 2px;
+            background: currentColor;
+        }
+
+        h1, h2, h3 {
+            color: var(--ink);
+            line-height: 1.15;
+        }
+
+        h1 {
+            max-width: 900px;
+            margin: 18px auto 22px;
+            font-family: var(--tech);
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            letter-spacing: -0.035em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin: 14px 0 18px;
+            font-family: var(--tech);
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+        }
+
+        p { color: var(--muted); }
+
+        section {
+            padding: 88px 0;
+            border-bottom: 1px solid rgba(18, 40, 61, 0.07);
+        }
+
+        .section-intro {
+            max-width: 760px;
+            margin-bottom: 34px;
+            font-size: 1.05rem;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(213, 222, 231, 0.92);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-family: var(--tech);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .logo span { color: var(--blue); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #29384a;
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover { color: var(--blue); }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .button {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 18px;
+            border: 1px solid var(--blue);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--blue);
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.035em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(2, 111, 184, 0.14);
+        }
+
+        .button.primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .button.dark {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: white;
+        }
+
         .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; position: relative; overflow: hidden; padding-top: 90px;
-            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-dark) 100%);
+            min-height: calc(100vh - 72px);
+            display: flex;
+            align-items: center;
+            padding: 92px 0 78px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 8%, rgba(2, 111, 184, 0.13), transparent 36%),
+                linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
         }
-        .hero-subtitle { color: var(--primary); font-weight: 600; margin-bottom: 1rem; display: block; letter-spacing: 2px; }
 
-        /* --- BADGES --- */
+        .hero-copy {
+            max-width: 790px;
+            margin: 0 auto 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        .status-strip {
+            width: min(920px, 100%);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 42px auto 0;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .status-strip > div {
+            padding: 20px;
+            border-right: 1px solid var(--line);
+        }
+
+        .status-strip > div:last-child { border-right: 0; }
+
+        .status-label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .status-value {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
         .badge-row {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 14px;
+            align-items: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .patent-badge {
-            display: inline-block;
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-            padding: 5px 12px;
-            font-size: 0.75rem;
-            font-family: var(--font-tech);
-            background: rgba(230, 81, 0, 0.05);
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .inception-text-badge {
-            display: inline-block;
-            border: 1px solid var(--nvidia-green);
-            color: #2f5f00;
-            padding: 5px 12px;
-            font-size: 0.75rem;
-            font-family: var(--font-tech);
-            background: rgba(118, 185, 0, 0.08);
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .nvidia-badge-img {
-            display: inline-block;
-            max-width: 210px;
-            height: auto;
-            vertical-align: middle;
-        }
-        .nvidia-badge-small {
-            max-width: 190px;
-            height: auto;
+            gap: 10px;
+            margin-bottom: 18px;
         }
 
-        /* --- GRID & CARDS --- */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            align-items: stretch;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            color: #36475a;
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
         }
+
+        .badge.patent { border-color: rgba(216, 90, 11, 0.4); color: var(--orange); }
+        .badge.inception { border-color: rgba(118, 185, 0, 0.5); color: #3d6800; }
+
+        .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: 22px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
         .card {
-            background: var(--bg-panel); padding: 30px; border: 1px solid var(--border);
-            border-radius: 8px; transition: 0.3s; position: relative; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            min-width: 0;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--panel);
+            box-shadow: 0 8px 22px rgba(15, 39, 64, 0.035);
+        }
+
+        .card.emphasis {
+            border-color: rgba(2, 111, 184, 0.35);
+            background: linear-gradient(145deg, #ffffff, #f1f8fc);
+        }
+
+        .card p:last-child { margin-bottom: 0; }
+
+        .problem-quote {
+            margin: 0 0 30px;
+            color: var(--ink);
+            font-family: var(--tech);
+            font-size: clamp(1.45rem, 3vw, 2.4rem);
+            line-height: 1.28;
+        }
+
+        .check-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+            list-style: none;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 25px;
+            color: var(--muted);
+        }
+
+        .check-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .stage-panel {
+            padding: 32px;
+            border-left: 5px solid var(--blue);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .stage-panel strong { color: var(--ink); }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .metric {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--panel-soft);
+        }
+
+        .metric small {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .metric strong {
+            color: var(--ink);
+            font-size: 1rem;
+        }
+
+        .dashboard-wrap {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+        }
+
+        .dashboard {
+            width: 100%;
+            min-width: 820px;
+            border-collapse: collapse;
+        }
+
+        .dashboard th, .dashboard td {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .dashboard th {
+            background: #edf4f8;
+            color: #314154;
+            font-size: 0.74rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .dashboard tr:last-child td { border-bottom: 0; }
+
+        .status {
+            display: inline-flex;
+            white-space: nowrap;
+            padding: 5px 9px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .status.complete { background: #e7f5ec; color: var(--green); }
+        .status.progress { background: #e8f2fa; color: var(--blue-dark); }
+        .status.planned { background: #fff4da; color: var(--amber); }
+        .status.pending { background: #fbeae8; color: var(--red); }
+        .status.future { background: #eef0f3; color: #596476; }
+
+        .success-criterion {
+            margin-top: 24px;
+            padding: 24px;
+            border: 1px solid rgba(2, 111, 184, 0.35);
+            border-radius: var(--radius);
+            background: linear-gradient(145deg, #f4fbff, #ffffff);
+        }
+
+        .success-criterion h3 { color: var(--blue-dark); }
+
+        .evidence-card {
             display: flex;
             flex-direction: column;
-        }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .card h3 { color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem; margin-top: 0; }
-        .card-tag {
-            font-size: 0.75rem; color: var(--primary); text-transform: uppercase;
-            letter-spacing: 1px; display: block; margin-bottom: 15px; font-weight: bold;
+            gap: 12px;
         }
 
-        /* --- CARD IMAGES --- */
-        .card .img {
-            height: 220px;
+        .evidence-title {
             display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .evidence-caption {
+            padding-top: 13px;
+            border-top: 1px solid var(--line);
+            color: #6b7787;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(7, auto);
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-        }
-        .card .img img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
+            gap: 10px;
+            margin: 32px 0;
+            overflow-x: auto;
+            padding-bottom: 8px;
         }
 
-        /* --- TECH SPECS TABLE --- */
-        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .specs-table td, .specs-table th { padding: 15px; border-bottom: 1px solid var(--border); text-align: left; }
-        .specs-table th { color: var(--primary); font-family: var(--font-tech); width: 40%; font-weight: 600; }
-        .specs-table td { color: var(--text-main); font-weight: 500; }
-
-        /* --- DIAGRAM SIMULATION --- */
-        .diagram-box {
-            border: 1px solid var(--border); padding: 40px; text-align: center; margin: 40px 0;
-            background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            overflow-x: auto; white-space: nowrap;
+        .flow-step {
+            min-width: 145px;
+            padding: 16px 14px;
+            border: 1px solid rgba(2, 111, 184, 0.35);
+            border-radius: 10px;
+            background: white;
+            color: var(--blue-dark);
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 750;
         }
-        .flow-step { display: inline-block; padding: 10px 20px; border: 1px solid var(--primary); background: rgba(2, 111, 184, 0.05); color: var(--primary); margin: 0 10px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; }
-        .arrow { display: inline-block; color: var(--text-muted); font-weight: bold; }
 
-        /* --- ECOSYSTEM / NVIDIA INCEPTION --- */
-        .ecosystem-panel {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 36px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        .flow-arrow { color: var(--blue); font-weight: 800; }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .product-image {
+            aspect-ratio: 16 / 9;
             display: grid;
-            grid-template-columns: minmax(220px, 300px) 1fr;
-            gap: 34px;
+            place-items: center;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(135deg, #e9f2f7, #f8fbfd);
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-body { padding: 25px; }
+
+        .product-kicker {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--blue);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .economics {
+            padding: 34px;
+            border-radius: var(--radius);
+            background: var(--ink);
+            color: white;
+        }
+
+        .economics h2, .economics h3 { color: white; }
+        .economics p { color: #d5e0eb; }
+
+        .economics-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
             align-items: center;
         }
-        .ecosystem-badge-box {
+
+        .formula {
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            color: white;
+            font-family: var(--tech);
+            font-size: 1rem;
+            line-height: 1.55;
+        }
+
+        .platform-stack {
+            display: grid;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .stack-row {
+            display: grid;
+            grid-template-columns: 175px 1fr;
+            gap: 18px;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .stack-row:last-child { border-bottom: 0; }
+        .stack-row strong { color: var(--ink); }
+
+        .warning-note {
+            margin-top: 20px;
+            padding: 18px;
+            border-left: 4px solid var(--orange);
+            background: #fff7f0;
+            color: #6c4b35;
+            font-size: 0.9rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 38px;
+            align-items: start;
+        }
+
+        .contact-form {
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 0 0 6px;
+            color: #314154;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 13px 14px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #f8fafc;
+            color: var(--ink);
+            font: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--blue);
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(2, 111, 184, 0.11);
+        }
+
+        .form-status {
+            min-height: 20px;
+            margin-top: 13px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.86rem;
+        }
+
+        footer {
+            padding: 48px 0;
             background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px;
             text-align: center;
         }
-        .ecosystem-note {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-top: 12px;
-            margin-bottom: 0;
-        }
-        .ecosystem-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 14px;
-            margin-top: 18px;
-        }
-        .ecosystem-item {
-            border-left: 3px solid var(--nvidia-green);
-            background: rgba(118, 185, 0, 0.06);
-            padding: 12px 14px;
-            border-radius: 6px;
-            color: var(--text-main);
-            font-size: 0.92rem;
-            font-weight: 600;
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 18px 0;
         }
 
-        /* --- FORM --- */
-        .contact-form input, .contact-form textarea, .contact-form select {
-            width: 100%; padding: 15px; background: #f8fafc; border: 1px solid var(--border);
-            color: var(--text-main); margin-bottom: 15px; font-family: var(--font-main); border-radius: 4px;
-        }
-        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--primary); background: #ffffff; box-shadow: 0 0 0 3px rgba(2, 111, 184, 0.1); }
-        .form-group { max-width: 600px; margin: 0 auto; }
-
-        /* --- FORM STATUS --- */
-        .form-status { margin-top: 15px; font-size: 0.9rem; font-family: var(--font-tech); min-height: 20px; transition: 0.3s; text-align: center; }
-        .form-status.success { color: var(--primary); }
-        .form-status.error { color: #dc2626; }
-
-        /* --- FOOTER --- */
-        footer { padding: 50px 0; text-align: center; font-size: 0.8rem; border-top: 1px solid var(--border); background: #ffffff; }
-        .footer-links { margin-top: 20px; }
-        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; font-weight: 500; }
-        .footer-links a:hover { color: var(--primary); }
-        .legal-attribution {
-            margin-top: 18px;
-            color: #94a3b8;
-            font-size: 0.68rem;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.45;
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.86rem;
+            text-decoration: none;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
+        .legal-copy {
+            max-width: 900px;
+            margin: 12px auto 0;
+            color: #788594;
+            font-size: 0.74rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 980px) {
             .nav-links { display: none; }
-            .diagram-box { padding: 20px; }
-            .ecosystem-panel { grid-template-columns: 1fr; padding: 24px; }
-            .nvidia-badge-img { max-width: 190px; }
-            .hero { min-height: 92vh; }
+            .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .metric-row { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid, .economics-grid { grid-template-columns: 1fr; }
+            .flow { justify-content: start; }
+        }
+
+        @media (max-width: 680px) {
+            .container { width: min(var(--max), calc(100% - 26px)); }
+            section { padding: 68px 0; }
+            .hero { padding-top: 64px; }
+            .nav-inner { min-height: 64px; }
+            .nav .button { display: none; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .status-strip { grid-template-columns: 1fr; }
+            .status-strip > div {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .status-strip > div:last-child { border-bottom: 0; }
+            .metric-row { grid-template-columns: 1fr; }
+            .stack-row { grid-template-columns: 1fr; gap: 4px; }
+            .card, .stage-panel, .economics, .contact-form { padding: 22px; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav>
-        <div class="container nav-wrap">
-            <div class="logo">TORRIDE<span>X</span></div>
+    <nav class="nav" aria-label="Primary navigation">
+        <div class="container nav-inner">
+            <a class="logo" href="#top" aria-label="TorrideX home">TORRIDE<span>X</span></a>
             <ul class="nav-links">
-                <li><a href="#vision">Platform</a></li>
-                <li><a href="#tech">Technology</a></li>
-                <li><a href="#ecosystem">Ecosystem</a></li>
-                <li><a href="#specs">Specs</a></li>
-                <li><a href="#safety">Regulatory</a></li>
+                <li><a href="#stage">Stage</a></li>
+                <li><a href="#validation">Validation</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#pathways">Pathways</a></li>
+                <li><a href="#platform">Simulation</a></li>
             </ul>
-            <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Contact</button>
+            <a class="button" href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <div class="badge-row">
-                <div class="patent-badge">SELECTED PLATFORM ELEMENTS UNDER PENDING U.S. PATENT FILINGS</div>
-                <div class="inception-text-badge">Member of the NVIDIA Inception program</div>
-            </div>
+    <main id="top">
+        <section class="hero">
+            <div class="container">
+                <div class="badge-row">
+                    <span class="badge patent">Selected platform elements subject to pending U.S. patent applications</span>
+                    <span class="badge inception">Member of NVIDIA Inception</span>
+                </div>
 
-            <!-- Optional official badge. Upload the unmodified badge file from the NVIDIA portal to assets/nvidia-inception-badge.png. -->
-            <div style="margin-bottom: 22px;">
-                <img class="nvidia-badge-img" src="assets/nvidia-inception-badge.png" alt="NVIDIA Inception Program badge">
-            </div>
+                <span class="eyebrow">Plasma-assisted thermionic conversion</span>
+                <h1>Persistent power for systems that are hard to service</h1>
+                <p class="hero-copy">
+                    TorrideX is developing a conversion core intended to transform persistent heat sources into continuous electricity for remote, autonomous and mission-critical systems.
+                </p>
+                <p class="hero-copy">
+                    The current program is advancing through <strong>non-radioactive laboratory validation</strong>.
+                </p>
 
-            <span class="hero-subtitle">PLASMA-MEDIATED CONVERSION ARCHITECTURE</span>
-            <h1>Modeled Multi-Stage Direct<br>Energy Conversion</h1>
-            <p style="max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem;">
-                A developmental platform aiming to improve usable electrical extraction from isotopic decay through a staged architecture with zero moving parts.
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <button class="btn-cta" style="background: var(--primary); color: #fff;" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'})">Our Technology</button>
-                <button class="btn-cta" onclick="document.getElementById('invest').scrollIntoView({behavior: 'smooth'})">Request Deck</button>
-            </div>
-        </div>
-    </section>
+                <div class="button-row">
+                    <a class="button primary" href="#validation">View validation program</a>
+                    <a class="button" href="#contact">Request public technical brief</a>
+                    <a class="button dark" href="#contact">Discuss partnership</a>
+                </div>
 
-    <section id="vision">
-        <div class="container">
-            <h2>Scalable Platform Roadmap</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="card-tag">PHASE 1: TORRIDEX SMALL</span>
-                    <div class="img">
-                        <img src="assets/T_Small.jpg" alt="TorrideX Small concept render">
+                <div class="status-strip" aria-label="Development status">
+                    <div>
+                        <span class="status-label">Current stage</span>
+                        <span class="status-value">Early laboratory validation</span>
                     </div>
-                    <h3>Remote / Autonomous</h3>
-                    <p><strong>Status:</strong> Modeled targets under laboratory validation.</p>
-                    <p>Remote power pathway designed for long-term autonomous systems and sensors, minimizing reliance on chemical battery lifecycles.</p>
-                </div>
-                <div class="card">
-                    <span class="card-tag">PHASE 2: TORRIDEX POWER</span>
-                    <div class="img">
-                        <img src="assets/T_Power.jpg" alt="TorrideX Power concept render">
+                    <div>
+                        <span class="status-label">Current hardware path</span>
+                        <span class="status-value">Non-radioactive planar test stand</span>
                     </div>
-                    <h3>Aerospace & Defense</h3>
-                    <p><strong>Status:</strong> Architectural roadmap.</p>
-                    <p>Higher-power platform targeting vibration-free, solid-state reliability for critical remote environments and defense applications.</p>
-                </div>
-                <div class="card">
-                    <span class="card-tag">PHASE 3: TORRIDEX WASTE</span>
-                    <div class="img">
-                        <img src="assets/T_Waste.jpg" alt="TorrideX Waste concept render">
+                    <div>
+                        <span class="status-label">Primary gate</span>
+                        <span class="status-value">Repeatable net electrical output</span>
                     </div>
-                    <h3>Industrial Scale</h3>
-                    <p><strong>Status:</strong> Long-term development pathway.</p>
-                    <p>Long-term industrial pathway for high-radiation thermal environments. Designed to utilize residual heat and radiation fields for scaled energy recovery.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="tech">
-        <div class="container">
-            <h2>The Technology</h2>
-            <p>TorrideX is designed to improve usable electrical extraction from isotopic decay through a staged plasma-mediated conversion architecture, targeting reduced thermalization losses.</p>
+        <section id="problem">
+            <div class="container">
+                <span class="eyebrow">Customer problem</span>
+                <h2>Service logistics can cost more than the electricity</h2>
+                <p class="problem-quote">“The electricity may be inexpensive. Reaching the equipment is not.”</p>
 
-            <div class="diagram-box">
-                <span class="flow-step">Isotope Source</span>
-                <span class="arrow">⟶</span>
-                <span class="flow-step">Plasma Environment</span>
-                <span class="arrow">⟶</span>
-                <span class="flow-step">Staged Extraction</span>
-                <span class="arrow">⟶</span>
-                <span class="flow-step">Power Output</span>
+                <div class="grid-2">
+                    <div class="card emphasis">
+                        <h3>Where conventional power becomes expensive</h3>
+                        <ul class="check-list">
+                            <li>Remote battery replacement requires travel, vessels, aircraft or specialist labor.</li>
+                            <li>Fuel delivery creates recurring logistics, storage and maintenance burdens.</li>
+                            <li>Solar availability can be constrained by darkness, dust, weather, latitude or concealment.</li>
+                            <li>Downtime can interrupt monitoring, communications, safety functions or data continuity.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Where TorrideX is intended to fit</h3>
+                        <p>
+                            TorrideX is not positioned as a substitute for grid electricity, consumer batteries or ordinary backup generators. The intended value is persistent operation where servicing is difficult, dangerous or economically disproportionate.
+                        </p>
+                        <ul class="check-list">
+                            <li>Unattended sensing and telemetry</li>
+                            <li>Extreme-environment instrumentation</li>
+                            <li>High-value autonomous systems</li>
+                            <li>Long-duration monitoring infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="grid-3">
-                <div class="card">
-                    <h3>1. The Chamber</h3>
-                    <p>Radioisotope-induced non-equilibrium plasma within a modular sealed chamber. Designed to operate continuously without combustion or complex moving parts.</p>
-                </div>
-                <div class="card">
-                    <h3>2. Charge Transport</h3>
-                    <p>Crossed electric and magnetic fields are used to shape charge transport and reduce recombination losses within the active environment.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color: var(--secondary);">3. Staged Harvesting</h3>
-                    <p>Energy extraction is modeled across direct electrostatic collection, inductive coupling, and advanced thermoelectrics for an optimized system approach.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="stage">
+            <div class="container">
+                <span class="eyebrow">Current stage</span>
+                <h2>One physical risk, one controlled validation program</h2>
 
-    <section id="ecosystem">
-        <div class="container">
-            <h2>Ecosystem</h2>
-            <div class="ecosystem-panel">
-                <div class="ecosystem-badge-box">
-                    <img class="nvidia-badge-small" src="assets/nvidia-inception-badge.png" alt="NVIDIA Inception Program badge">
-
-                </div>
-                <div>
-                    <p><strong>Kulicage Dynamics LLC is a member of the NVIDIA Inception program.</strong></p>
+                <div class="stage-panel">
                     <p>
-                        TorrideX uses a simulation-guided development path for compact autonomous power systems. This ecosystem connection supports our work around thermal and structural modeling, design-space exploration, future digital-twin workflows, and AI-assisted diagnostics for laboratory validation data.
+                        TorrideX is an early-stage R&amp;D program progressing from concept definition and preliminary modeling toward laboratory proof of the common conversion core.
                     </p>
-                    <div class="ecosystem-list">
-                        <div class="ecosystem-item">Simulation-guided engineering</div>
-                        <div class="ecosystem-item">Thermal / structural modeling</div>
-                        <div class="ecosystem-item">Future digital-twin workflows</div>
-                        <div class="ecosystem-item">AI-assisted test-data diagnostics</div>
+                    <p>
+                        <strong>Already established:</strong> system architecture, preliminary thermal and charged-particle models, an initial in-house simulation stack, patent filings and a staged validation plan.
+                    </p>
+                    <p>
+                        <strong>Not yet established:</strong> loaded electrical output, positive auxiliary-adjusted net power, validated efficiency, endurance or product qualification.
+                    </p>
+
+                    <div class="metric-row">
+                        <div class="metric">
+                            <small>Development level</small>
+                            <strong>Approx. TRL 2</strong>
+                        </div>
+                        <div class="metric">
+                            <small>Near-term objective</small>
+                            <strong>Progress toward TRL 3</strong>
+                        </div>
+                        <div class="metric">
+                            <small>First heat source</small>
+                            <strong>Controlled electrical heater</strong>
+                        </div>
+                        <div class="metric">
+                            <small>Regulated material</small>
+                            <strong>Not used in first validation stage</strong>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="specs">
-        <div class="container">
-            <h2>Target Specifications Roadmap</h2>
-            <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-                <table class="specs-table">
-                    <tr>
-                        <th>System Efficiency</th>
-                        <td style="font-weight: bold; color: var(--secondary);">Modeled multi-stage targets under validation</td>
-                    </tr>
-                    <tr>
-                        <th>Power Output (Per Module)</th>
-                        <td>Scalable roadmap from low-power validation modules toward larger future configurations</td>
-                    </tr>
-                    <tr>
-                        <th>Operational Lifespan</th>
-                        <td>Targeting long-term autonomy; final duration depends on future source configuration</td>
-                    </tr>
-                    <tr>
-                        <th>Energy Extraction Modes</th>
-                        <td>Direct DC, inductive AC, thermoelectric / thermal recovery</td>
-                    </tr>
-                    <tr>
-                        <th>Scalability</th>
-                        <td>Modular architecture design</td>
-                    </tr>
-                    <tr>
-                        <th>Mechanical Profile</th>
-                        <td>Targeting zero moving parts in the conversion architecture</td>
-                    </tr>
-                </table>
+        <section id="validation">
+            <div class="container">
+                <span class="eyebrow">Validation program</span>
+                <h2>Evidence before performance claims</h2>
+                <p class="section-intro">
+                    The validation program separates modeling, hardware readiness and measured results. Status labels describe the current evidence level rather than a future product promise.
+                </p>
+
+                <div class="dashboard-wrap">
+                    <table class="dashboard">
+                        <thead>
+                            <tr>
+                                <th>Milestone</th>
+                                <th>Status</th>
+                                <th>Acceptance criterion</th>
+                                <th>Evidence path</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Conversion architecture</td>
+                                <td><span class="status complete">Established</span></td>
+                                <td>Physics assumptions and energy pathways documented</td>
+                                <td>Public technical overview</td>
+                            </tr>
+                            <tr>
+                                <td>1D thermal solver</td>
+                                <td><span class="status complete">Initial version complete</span></td>
+                                <td>Energy balance and analytical regression tests pass</td>
+                                <td>Model summary and version-controlled code</td>
+                            </tr>
+                            <tr>
+                                <td>Radiation-gap thermal model</td>
+                                <td><span class="status complete">Implemented</span></td>
+                                <td>Benchmark and regression cases remain reproducible</td>
+                                <td>Technical note</td>
+                            </tr>
+                            <tr>
+                                <td>Charged-particle benchmark</td>
+                                <td><span class="status progress">Preliminary</span></td>
+                                <td>Reference conditions can be reproduced and traced</td>
+                                <td>COMSOL / in-house benchmark report</td>
+                            </tr>
+                            <tr>
+                                <td>Self-consistent plasma model</td>
+                                <td><span class="status progress">In development</span></td>
+                                <td>Charge, field and particle coupling converge under documented assumptions</td>
+                                <td>Pending</td>
+                            </tr>
+                            <tr>
+                                <td>Test-stand requirements</td>
+                                <td><span class="status progress">In development</span></td>
+                                <td>Geometry, instrumentation and measurement protocol are frozen</td>
+                                <td>Bench specification</td>
+                            </tr>
+                            <tr>
+                                <td>Non-radioactive test stand</td>
+                                <td><span class="status planned">Planned build phase</span></td>
+                                <td>Vacuum, thermal and electrical subsystems operate together</td>
+                                <td>Laboratory records</td>
+                            </tr>
+                            <tr>
+                                <td>Loaded electrical output</td>
+                                <td><span class="status pending">Not measured</span></td>
+                                <td>Repeatable power into a defined resistive load</td>
+                                <td>Test report</td>
+                            </tr>
+                            <tr>
+                                <td>Auxiliary-adjusted result</td>
+                                <td><span class="status pending">Primary gate</span></td>
+                                <td>Complete input/output accounting with uncertainty</td>
+                                <td>Validation report</td>
+                            </tr>
+                            <tr>
+                                <td>Independent review</td>
+                                <td><span class="status planned">Planned</span></td>
+                                <td>Third-party review of protocol and results</td>
+                                <td>Partner report</td>
+                            </tr>
+                            <tr>
+                                <td>Persistent-source integration</td>
+                                <td><span class="status future">Future phase</span></td>
+                                <td>Only after conversion-core validation and regulatory planning</td>
+                                <td>Future program</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="success-criterion">
+                    <h3>Primary success criterion</h3>
+                    <p>
+                        Repeatable electrical output under a defined load, measured against complete system input power, with auxiliary-load subtraction, controlled baseline comparisons, artifact testing and documented uncertainty.
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="safety">
-        <div class="container">
-            <h2>Safety & Regulatory Pathway</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Containment</h3>
-                    <p>The architecture is designed with layered encapsulation barriers to prioritize structural integrity in extreme operational environments.</p>
-                </div>
-                <div class="card">
-                    <h3>Shielding</h3>
-                    <p>Future isotope-assisted configurations would require dedicated shielding, containment, licensing, and safety analysis before any regulated material is used.</p>
-                </div>
-                <div class="card">
-                    <h3>Compliance Target</h3>
-                    <p>Near-term work focuses on non-radioactive laboratory validation while preserving a structured pathway for future regulatory review and traceability.</p>
+        <section id="evidence">
+            <div class="container">
+                <span class="eyebrow">Evidence</span>
+                <h2>What the current evidence does—and does not—show</h2>
+                <p class="section-intro">
+                    Every public figure, model and image should carry an explicit evidence label. Concept renderings and program memberships are context, not proof of device performance.
+                </p>
+
+                <div class="grid-4">
+                    <article class="card evidence-card">
+                        <div class="evidence-title">
+                            <h3>Thermal modeling</h3>
+                            <span class="status complete">Calculated / modeled</span>
+                        </div>
+                        <p>Initial multilayer thermal calculations, energy-balance tests and radiative-gap implementation.</p>
+                        <div class="evidence-caption">Not experimental validation</div>
+                    </article>
+
+                    <article class="card evidence-card">
+                        <div class="evidence-title">
+                            <h3>Particle transport</h3>
+                            <span class="status progress">Simulated</span>
+                        </div>
+                        <p>Preliminary charged-particle behavior under defined electrostatic and xenon-collision assumptions.</p>
+                        <div class="evidence-caption">Does not establish net power</div>
+                    </article>
+
+                    <article class="card evidence-card">
+                        <div class="evidence-title">
+                            <h3>Test-stand architecture</h3>
+                            <span class="status progress">Under development</span>
+                        </div>
+                        <p>Planar geometry, measurement controls, baselines and artifact-rejection logic are being defined.</p>
+                        <div class="evidence-caption">Current hardware design</div>
+                    </article>
+
+                    <article class="card evidence-card">
+                        <div class="evidence-title">
+                            <h3>Performance</h3>
+                            <span class="status pending">Not measured</span>
+                        </div>
+                        <p>No validated loaded output, net-positive operation, efficiency or endurance result is claimed.</p>
+                        <div class="evidence-caption">Primary laboratory objective</div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="invest">
-        <div class="container" style="text-align: center;">
-            <h2>Contact TorrideX</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px auto;">Request our confidential pitch deck and prototyping roadmap under NDA.</p>
+        <section id="technology">
+            <div class="container">
+                <span class="eyebrow">How the core works</span>
+                <h2>Persistent heat, direct electron collection and optional thermal recovery</h2>
+                <p class="section-intro">
+                    The radioisotope is not the mandatory operating mechanism of the first validation system. It is one possible future persistent heat source, physically separated from the conversion environment.
+                </p>
 
-            <form id="contactForm" action="https://formspree.io/f/xldknzbj" method="POST" class="contact-form form-group">
-                <input type="text" name="name" placeholder="Full Name / Organization" required>
-                <input type="email" name="email" placeholder="Corporate Email" required>
+                <div class="flow" aria-label="TorrideX energy flow">
+                    <div class="flow-step">Persistent heat source</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Heated emitter</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Thermionic emission</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Plasma-assisted space-charge mitigation</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Direct DC collection</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Optional residual-heat recovery</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Auxiliary-adjusted usable output</div>
+                </div>
 
-                <select name="partner_type" required>
-                    <option value="" disabled selected>Contact Type</option>
-                    <option value="Private Investor">Private Investor</option>
-                    <option value="Venture Capital / Accelerator">Venture Capital / Accelerator</option>
-                    <option value="Industrial Partner">Industrial Partner</option>
-                    <option value="Government / Non-Dilutive Program">Government / Non-Dilutive Program</option>
-                    <option value="Technical Advisor / Lab">Technical Advisor / Lab</option>
-                </select>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>1. Thermionic channel</h3>
+                        <p>
+                            A heated emitter releases electrons toward a cooler collector. This is the primary direct conversion path under investigation.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>2. Plasma assistance</h3>
+                        <p>
+                            A controlled weakly ionized environment is intended to mitigate electron space-charge limitations. The plasma is not treated as a source of free energy.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>3. Thermal recovery</h3>
+                        <p>
+                            A secondary thermoelectric stage may recover part of the remaining heat and support full-system energy accounting.
+                        </p>
+                    </div>
+                </div>
 
-                <textarea name="message" rows="4" placeholder="Message or Inquiry..."></textarea>
+                <div class="warning-note">
+                    Modeled power and efficiency values are design targets only. They have not been experimentally validated and are intentionally excluded from headline specifications.
+                </div>
+            </div>
+        </section>
 
-                <button type="submit" id="sendBtn" class="btn-cta" style="width: 100%; background: var(--primary); color: #fff;">Request Pitch Deck</button>
+        <section id="pathways">
+            <div class="container">
+                <span class="eyebrow">Product architecture</span>
+                <h2>One conversion core, staged market pathways</h2>
+                <p class="section-intro">
+                    TorrideX Core is the common technology under validation. Customer-facing pathways are sequenced behind the same physical gate rather than presented as three finished products.
+                </p>
 
-                <div id="formStatus" class="form-status"></div>
-            </form>
-        </div>
-    </section>
+                <div class="grid-3">
+                    <article class="card product-card">
+                        <div class="product-image">
+                            <img src="assets/T_Small.jpg" alt="Concept rendering of the TorrideX Sentinel pathway">
+                        </div>
+                        <div class="product-body">
+                            <span class="product-kicker">Initial pathway</span>
+                            <h3>TorrideX Sentinel</h3>
+                            <p>
+                                A persistent-power development pathway for unattended sensors, telemetry nodes and monitoring systems where battery replacement is expensive or hazardous.
+                            </p>
+                            <p><strong>Status:</strong> Product-development pathway following Core validation.</p>
+                            <p class="evidence-caption">Concept rendering — not experimentally validated</p>
+                        </div>
+                    </article>
+
+                    <article class="card product-card">
+                        <div class="product-image">
+                            <img src="assets/T_Power.jpg" alt="Concept rendering of the TorrideX Mission pathway">
+                        </div>
+                        <div class="product-body">
+                            <span class="product-kicker">Future qualified pathway</span>
+                            <h3>TorrideX Mission</h3>
+                            <p>
+                                A future extreme-environment pathway for aerospace, lunar, planetary, deep-ocean and fixed defense instrumentation.
+                            </p>
+                            <p><strong>Status:</strong> Future development requiring source, environmental and safety qualification.</p>
+                            <p class="evidence-caption">Concept rendering — future architecture</p>
+                        </div>
+                    </article>
+
+                    <article class="card product-card">
+                        <div class="product-image">
+                            <img src="assets/T_Waste.jpg" alt="Concept rendering of the TorrideX Recovery pathway">
+                        </div>
+                        <div class="product-body">
+                            <span class="product-kicker">Long-term site-integrated pathway</span>
+                            <h3>TorrideX Recovery</h3>
+                            <p>
+                                A long-term architecture intended to evaluate conversion of a portion of the heat already emitted by stored radioactive materials into useful electricity at licensed nuclear facilities.
+                            </p>
+                            <p><strong>Status:</strong> Long-term research and site-specific development.</p>
+                            <p class="evidence-caption">Concept rendering — not a waste-disposal system</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="applications">
+            <div class="container">
+                <span class="eyebrow">Initial applications</span>
+                <h2>Jobs that justify persistent power</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>Remote infrastructure</h3>
+                        <ul class="check-list">
+                            <li>Pipeline corrosion monitoring</li>
+                            <li>Bridge, dam and levee sensing</li>
+                            <li>Remote weather and wildfire detection</li>
+                            <li>Arctic or offshore telemetry</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Scientific and government systems</h3>
+                        <ul class="check-list">
+                            <li>Seismic and under-ice instruments</li>
+                            <li>Deep-ocean research nodes</li>
+                            <li>Unattended perimeter sensing</li>
+                            <li>Emergency radio repeaters</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Long-term qualified pathways</h3>
+                        <ul class="check-list">
+                            <li>Lunar surface instruments</li>
+                            <li>Planetary weather stations</li>
+                            <li>Dry-cask monitoring and telemetry</li>
+                            <li>Robotic inspection support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="economics">
+            <div class="container">
+                <div class="economics">
+                    <div class="economics-grid">
+                        <div>
+                            <span class="eyebrow" style="color:#74c0f0;">Customer economics</span>
+                            <h2>Avoided service cost, not commodity electricity</h2>
+                            <p>
+                                The first commercial case should be evaluated against total lifecycle cost: replacement visits, access logistics, downtime, lost data, fuel handling and maintenance—not only the price per kilowatt-hour.
+                            </p>
+                        </div>
+                        <div class="formula">
+                            Customer value ≈<br>
+                            avoided service visits<br>
+                            + avoided downtime<br>
+                            + preserved data / mission continuity<br>
+                            − system acquisition and qualification cost
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform">
+            <div class="container">
+                <span class="eyebrow">Simulation and engineering platform</span>
+                <h2>Traceable models supporting—not replacing—physical validation</h2>
+                <p class="section-intro">
+                    TorrideX is building a version-controlled internal calculation platform to connect thermal, electrostatic and charged-particle studies with future test data.
+                </p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Current and planned stack</h3>
+                        <div class="platform-stack">
+                            <div class="stack-row">
+                                <strong>Thermal 1D</strong>
+                                <span>Energy balance, conduction, radiation-gap and analytical regression tests</span>
+                            </div>
+                            <div class="stack-row">
+                                <strong>Thermal / electrostatic 3D</strong>
+                                <span>Planned open FEM workflows with convergence and benchmark gates</span>
+                            </div>
+                            <div class="stack-row">
+                                <strong>Particle transport</strong>
+                                <span>CPU/GPU reference models and xenon-collision data pathways</span>
+                            </div>
+                            <div class="stack-row">
+                                <strong>Surrogate models</strong>
+                                <span>Future design-space exploration after validated simulation cases exist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card emphasis">
+                        <h3>What the platform is for</h3>
+                        <ul class="check-list">
+                            <li>Preserve assumptions, material data and solver versions</li>
+                            <li>Run reproducible parameter studies</li>
+                            <li>Compare in-house models with analytical and COMSOL benchmarks</li>
+                            <li>Plan instrumentation and define acceptance criteria</li>
+                            <li>Calibrate models against future laboratory data</li>
+                        </ul>
+                        <div class="warning-note">
+                            A simulation platform improves engineering discipline. It does not by itself validate output power, net efficiency or product readiness.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <span class="eyebrow">Team and capability build</span>
+                <h2>Founder-led engineering with defined specialist needs</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Nikolai Kulikov — Founder &amp; CTO</h3>
+                        <p>
+                            Mechanical engineer and deep-tech inventor leading system architecture, mechanical design, prototype planning, simulation integration and technical documentation.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Current capability priorities</h3>
+                        <p>
+                            The next stage benefits from specialist support in plasma and thermionic physics, vacuum engineering, high-temperature materials, low-current measurement, power electronics and future nuclear regulatory planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="corporate">
+            <div class="container">
+                <span class="eyebrow">Corporate, IP and regulatory context</span>
+                <h2>Clear separation between current R&amp;D and future regulated systems</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>Corporate identity</h3>
+                        <p>
+                            TorrideX is a project and technology brand being developed by Kulicage Dynamics LLC, a North Carolina limited liability company.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Intellectual property</h3>
+                        <p>
+                            Selected platform elements are the subject of pending U.S. patent applications. Public materials intentionally omit sensitive implementation detail.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Regulatory sequence</h3>
+                        <p>
+                            The first validation program does not use radioactive material. Any future persistent-source configuration would require qualified partners, source engineering, safety analysis and applicable licensing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div>
+                        <span class="eyebrow">Contact</span>
+                        <h2>Discuss validation, technical review or partnership</h2>
+                        <p class="section-intro">
+                            Public technical materials can be shared without disclosing implementation details. Confidential materials are available selectively under an appropriate agreement.
+                        </p>
+                        <p><strong>Email:</strong> nikolai@kdyn.tech</p>
+                        <p><strong>Location:</strong> Charlotte, North Carolina, USA</p>
+                    </div>
+
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xldknzbj" method="POST">
+                        <label for="name">Name / organization</label>
+                        <input id="name" type="text" name="name" autocomplete="name" required>
+
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" autocomplete="email" required>
+
+                        <label for="type">Inquiry type</label>
+                        <select id="type" name="partner_type" required>
+                            <option value="" selected disabled>Select one</option>
+                            <option value="Technical validation / laboratory">Technical validation / laboratory</option>
+                            <option value="Industrial or strategic partner">Industrial or strategic partner</option>
+                            <option value="Investor or accelerator">Investor or accelerator</option>
+                            <option value="Government or non-dilutive program">Government or non-dilutive program</option>
+                            <option value="Advisor or specialist">Advisor or specialist</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button id="sendBtn" class="button primary" style="width:100%;" type="submit">Send inquiry</button>
+                        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px; color: var(--text-muted);">TORRIDE<span>X</span></div>
-            <p>&copy; 2026 Kulicage Dynamics LLC / TorrideX. All rights reserved.</p>
+            <a class="logo" href="#top">TORRIDE<span>X</span></a>
+            <p style="margin-top:12px;">A technology project of Kulicage Dynamics LLC · Charlotte, North Carolina</p>
+
             <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="risks.html">Risk Disclosures</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="risks.html">R&amp;D Disclosures</a>
                 <a href="legal.html">Legal</a>
             </div>
-            <p class="legal-attribution">
-                DISCLAIMER: TorrideX is a research and development platform. Performance values are modeled targets and are not final product specifications. Selected platform elements are under pending U.S. patent filings. References to NVIDIA Inception identify program membership only and do not imply endorsement, funding, validation, or partnership by NVIDIA.
+
+            <p class="legal-copy">
+                TorrideX is an early-stage research and development program. Performance values, product configurations and future applications described on this site are targets or concepts unless expressly identified as measured. No loaded output, net-positive operation, efficiency or endurance result is currently claimed.
             </p>
-            <p class="legal-attribution">
-                &copy; 2025 NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries. All other trademarks are the property of their respective owners.
+            <p class="legal-copy">
+                References to NVIDIA Inception identify program membership only and do not imply endorsement, funding, technical validation or partnership by NVIDIA.
             </p>
+            <p class="legal-copy">&copy; 2026 Kulicage Dynamics LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        const form = document.getElementById('contactForm');
-        const status = document.getElementById('formStatus');
-        const sendBtn = document.getElementById('sendBtn');
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("formStatus");
+        const sendBtn = document.getElementById("sendBtn");
 
         if (form) {
-            form.addEventListener('submit', async function(event) {
+            form.addEventListener("submit", async (event) => {
                 event.preventDefault();
-                const formData = new FormData(form);
+
                 const originalText = sendBtn.textContent;
-                sendBtn.textContent = 'Sending...';
+                sendBtn.textContent = "Sending…";
                 sendBtn.disabled = true;
-                status.textContent = '';
-                status.className = 'form-status';
+                status.textContent = "";
 
                 try {
                     const response = await fetch(form.action, {
                         method: form.method,
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
+                        body: new FormData(form),
+                        headers: { "Accept": "application/json" }
                     });
 
-                    if (response.ok) {
-                        status.textContent = 'Thank you. Your request has been sent.';
-                        status.className = 'form-status success';
-                        form.reset();
-                    } else {
-                        status.textContent = 'Something went wrong. Please try again or email us directly.';
-                        status.className = 'form-status error';
+                    if (!response.ok) {
+                        throw new Error("Form submission failed");
                     }
-                } catch (error) {
-                    status.textContent = 'Network error. Please try again later.';
-                    status.className = 'form-status error';
-                }
 
-                sendBtn.textContent = originalText;
-                sendBtn.disabled = false;
+                    status.textContent = "Thank you. Your inquiry has been sent.";
+                    form.reset();
+                } catch (error) {
+                    status.textContent = "The form could not be sent. Please email nikolai@kdyn.tech.";
+                } finally {
+                    sendBtn.textContent = originalText;
+                    sendBtn.disabled = false;
+                }
             });
         }
     </script>
