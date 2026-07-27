@@ -526,25 +526,29 @@
         }
 
         .product-image {
+            flex: 0 0 320px;
             width: 100%;
-            height: auto;
-            min-height: 0;
-            display: block;
+            height: 320px;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 18px;
             border-bottom: 1px solid var(--line);
             background:
                 radial-gradient(circle at 50% 45%, #ffffff 0%, #f2f7fa 78%);
-            overflow: visible;
+            overflow: hidden;
         }
 
         .product-image img {
             display: block;
-            width: 100%;
+            width: auto;
             height: auto;
-            max-height: none;
+            max-width: 100%;
+            max-height: 100%;
             margin: 0 auto;
-            object-fit: initial;
-            object-position: initial;
+            object-fit: contain;
+            object-position: center;
         }
 
         .product-body { padding: 28px; }
@@ -580,10 +584,12 @@
         }
 
         .product-body {
+            flex: 1 1 auto;
+            min-height: 0;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            height: 100%;
+            height: auto;
         }
 
         .product-body p {
@@ -814,6 +820,11 @@
             .metric-row { grid-template-columns: repeat(2, 1fr); }
             .contact-grid, .economics-grid { grid-template-columns: 1fr; }
             .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .product-image {
+                flex-basis: 280px;
+                height: 280px;
+                min-height: 280px;
+            }
         }
 
         @media (max-width: 680px) {
@@ -828,6 +839,12 @@
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .flow { grid-template-columns: 1fr; }
             .flow-step { min-height: 112px; }
+            .product-image {
+                flex-basis: 240px;
+                height: 240px;
+                min-height: 240px;
+                padding: 14px;
+            }
             .status-strip { grid-template-columns: 1fr; }
             .status-strip > div {
                 border-right: 0;
