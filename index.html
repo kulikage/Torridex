@@ -565,6 +565,70 @@
             font-size: 0.9rem;
         }
 
+        .engineering-flow {
+            width: min(760px, 100%);
+            display: grid;
+            justify-items: center;
+            gap: 7px;
+            margin: 34px auto;
+        }
+
+        .engineering-node {
+            width: min(520px, 100%);
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 18px;
+            border: 1px solid rgba(2, 111, 184, 0.32);
+            border-radius: 11px;
+            background: linear-gradient(145deg, #ffffff, #f2f8fc);
+            box-shadow: 0 7px 18px rgba(15, 39, 64, 0.04);
+        }
+
+        .engineering-node span {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: #ffffff;
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+
+        .engineering-node strong {
+            color: var(--ink);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .engineering-arrow {
+            color: var(--blue);
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .engineering-status-card {
+            border-top: 4px solid var(--blue);
+        }
+
+        .engineering-status-grid .engineering-status-card:nth-child(2) {
+            border-top-color: var(--amber);
+        }
+
+        .engineering-status-grid .engineering-status-card:nth-child(3) {
+            border-top-color: #6b7280;
+        }
+
+        .engineering-metrics .metric strong {
+            font-size: 0.92rem;
+            line-height: 1.4;
+        }
+
+
         .contact-grid {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
@@ -897,6 +961,142 @@
             </div>
         </section>
 
+        <section id="platform">
+            <div class="container">
+                <span class="eyebrow">Engineering and simulation infrastructure</span>
+                <h2>Traceable engineering support for physical validation</h2>
+                <p class="section-intro">
+                    TorrideX is building a version-controlled engineering simulation stack to plan experiments, verify physical models, quantify uncertainty, and assimilate laboratory data. The platform connects analytical benchmarks, external multiphysics comparisons, internally developed solvers, and future experimental measurements.
+                </p>
+
+                <div class="success-criterion" style="margin-top:0;">
+                    <h3>Simulations support—but do not replace—experimental validation.</h3>
+                    <p>
+                        The infrastructure is not a validated digital twin, a replacement for COMSOL, a standalone SaaS product, or evidence of confirmed TorrideX power, efficiency, or full plasma behavior.
+                    </p>
+                </div>
+
+                <div class="engineering-flow" aria-label="TorrideX engineering workflow">
+                    <div class="engineering-node">
+                        <span>01</span>
+                        <strong>Analytical Physics</strong>
+                    </div>
+                    <div class="engineering-arrow">↓</div>
+                    <div class="engineering-node">
+                        <span>02</span>
+                        <strong>Verified Internal Solvers</strong>
+                    </div>
+                    <div class="engineering-arrow">↓</div>
+                    <div class="engineering-node">
+                        <span>03</span>
+                        <strong>COMSOL Regression Benchmarks</strong>
+                    </div>
+                    <div class="engineering-arrow">↓</div>
+                    <div class="engineering-node">
+                        <span>04</span>
+                        <strong>Laboratory Measurements</strong>
+                    </div>
+                    <div class="engineering-arrow">↓</div>
+                    <div class="engineering-node">
+                        <span>05</span>
+                        <strong>Model Calibration</strong>
+                    </div>
+                    <div class="engineering-arrow">↓</div>
+                    <div class="engineering-node">
+                        <span>06</span>
+                        <strong>Design Optimization</strong>
+                    </div>
+                </div>
+
+                <div class="grid-3 engineering-status-grid">
+                    <article class="card engineering-status-card">
+                        <span class="product-kicker">Verified foundations</span>
+                        <h3>Benchmarked and reproducible</h3>
+                        <ul class="check-list">
+                            <li>Thermal 1D analytical multilayer model with energy-balance checks</li>
+                            <li>Conservative finite-volume thermal solver with analytical-to-numerical verification</li>
+                            <li>Xe conduction and diffuse-gray radiative-gap model with nonlinear and limiting-case tests</li>
+                            <li>Unit-safe Richardson–Dushman thermionic-emission module</li>
+                            <li>Document-based COMSOL Legacy v03 thermal and thermionic regression</li>
+                            <li>Analytical and numerical 1D parallel-plate electrostatics</li>
+                        </ul>
+                    </article>
+
+                    <article class="card engineering-status-card">
+                        <span class="product-kicker">In development</span>
+                        <h3>Particle and data foundations</h3>
+                        <ul class="check-list">
+                            <li>Deterministic CPU collisionless particle reference</li>
+                            <li>Analytical electron trajectory and wall-collection checks</li>
+                            <li>CPU/GPU cross-check methodology</li>
+                            <li>NVIDIA Warp particle implementation</li>
+                            <li>Xe collision physics and energy-dependent cross sections</li>
+                            <li>Experiment-data schema and provenance</li>
+                            <li>Three-dimensional thermal FEM</li>
+                        </ul>
+                    </article>
+
+                    <article class="card engineering-status-card">
+                        <span class="product-kicker">Future</span>
+                        <h3>Calibration and optimization</h3>
+                        <ul class="check-list">
+                            <li>Self-consistent charge, field, ionization, and plasma coupling</li>
+                            <li>Calibrated uncertainty models tied to laboratory measurements</li>
+                            <li>Surrogate models after a sufficient verified case library exists</li>
+                            <li>Product-specific design-space exploration</li>
+                            <li>Customer-specific engineering configurations</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="metric-row engineering-metrics">
+                    <div class="metric">
+                        <small>COMSOL regression</small>
+                        <strong>≈0.306% reconstructed current difference</strong>
+                    </div>
+                    <div class="metric">
+                        <small>Diagnostic comparison</small>
+                        <strong>≈0.020% using COMSOL-reported average surface temperature</strong>
+                    </div>
+                    <div class="metric">
+                        <small>Electrostatics benchmark</small>
+                        <strong>≈45.45 kV/m across reconstructed 22 mm gap at 1,000 V</strong>
+                    </div>
+                    <div class="metric">
+                        <small>Verification basis</small>
+                        <strong>Analytical, numerical, limiting-case, and provenance checks</strong>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top:22px;">
+                    <div class="card">
+                        <h3>What can be shown publicly</h3>
+                        <ul class="check-list">
+                            <li>Analytical versus numerical temperature profiles</li>
+                            <li>Convergence and energy-balance evidence</li>
+                            <li>Document-based COMSOL current comparison</li>
+                            <li>Electrostatic potential and electric-field profiles</li>
+                            <li>Version provenance, source hashes, and result classification</li>
+                        </ul>
+                    </div>
+
+                    <div class="card emphasis">
+                        <h3>Why this reduces technical risk</h3>
+                        <p>
+                            TorrideX is not relying on isolated simulation screenshots. Physical assumptions, solver versions, external benchmarks, convergence checks, known limitations, uncertainty, and future laboratory measurements are recorded within one reproducible engineering workflow.
+                        </p>
+                        <p>
+                            <strong>The platform reduces technical risk by connecting model verification, experiment planning, laboratory calibration, and product-specific optimization.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="warning-note">
+                    The COMSOL comparison is a document-based regression, not experimental validation. Space charge, Xe collisions, and self-consistent plasma physics are not yet part of the verified electrostatics foundation.
+                </div>
+            </div>
+        </section>
+
         <section id="evidence">
             <div class="container">
                 <span class="eyebrow">Evidence</span>
@@ -1106,54 +1306,6 @@
                             + avoided downtime<br>
                             + preserved data / mission continuity<br>
                             − system acquisition and qualification cost
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="platform">
-            <div class="container">
-                <span class="eyebrow">Simulation and engineering platform</span>
-                <h2>Traceable models supporting—not replacing—physical validation</h2>
-                <p class="section-intro">
-                    TorrideX is building a version-controlled internal calculation platform to connect thermal, electrostatic and charged-particle studies with future test data.
-                </p>
-
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>Current and planned stack</h3>
-                        <div class="platform-stack">
-                            <div class="stack-row">
-                                <strong>Thermal 1D</strong>
-                                <span>Energy balance, conduction, radiation-gap and analytical regression tests</span>
-                            </div>
-                            <div class="stack-row">
-                                <strong>Thermal / electrostatic 3D</strong>
-                                <span>Planned open FEM workflows with convergence and benchmark gates</span>
-                            </div>
-                            <div class="stack-row">
-                                <strong>Particle transport</strong>
-                                <span>CPU/GPU reference models and xenon-collision data pathways</span>
-                            </div>
-                            <div class="stack-row">
-                                <strong>Surrogate models</strong>
-                                <span>Future design-space exploration after validated simulation cases exist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card emphasis">
-                        <h3>What the platform is for</h3>
-                        <ul class="check-list">
-                            <li>Preserve assumptions, material data and solver versions</li>
-                            <li>Run reproducible parameter studies</li>
-                            <li>Compare in-house models with analytical and COMSOL benchmarks</li>
-                            <li>Plan instrumentation and define acceptance criteria</li>
-                            <li>Calibrate models against future laboratory data</li>
-                        </ul>
-                        <div class="warning-note">
-                            A simulation platform improves engineering discipline. It does not by itself validate output power, net efficiency or product readiness.
                         </div>
                     </div>
                 </div>
