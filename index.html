@@ -1132,32 +1132,37 @@
                 </div>
 
                 <div class="grid-3 engineering-status-grid">
-<article class="card engineering-status-card">
-    <span class="product-kicker">Verified foundations</span>
-    <h3>Benchmarked and reproducible</h3>
-    <ul class="check-list">
-        <li>Thermal 1D analytical multilayer model with energy-balance checks</li>
-        <li>Conservative finite-volume thermal solver with analytical-to-numerical verification</li>
-        <li>Xe conduction and diffuse-gray radiative-gap model with nonlinear and limiting-case tests</li>
-        <li>Unit-safe Richardson–Dushman thermionic-emission module</li>
-        <li>Document-based COMSOL Legacy v03 thermal and thermionic regression</li>
-        <li>Analytical and numerical 1D parallel-plate electrostatics</li>
-        <li>Deterministic CPU collisionless particle reference</li>
-    </ul>
-</article>
+                    <article class="card engineering-status-card">
+                        <span class="product-kicker">Verified foundations</span>
+                        <h3>Benchmarked and reproducible</h3>
+                        <ul class="check-list">
+                            <li>Thermal 1D analytical multilayer model with energy-balance checks</li>
+                            <li>Conservative finite-volume thermal solver with analytical-to-numerical verification</li>
+                            <li>Xe conduction and diffuse-gray radiative-gap model with nonlinear and limiting-case tests</li>
+                            <li>Unit-safe Richardson–Dushman thermionic-emission module</li>
+                            <li>Document-based COMSOL Legacy v03 thermal and thermionic regression</li>
+                            <li>Analytical and numerical 1D parallel-plate electrostatics</li>
+                            <li>Analytical particle trajectory</li>
+                            <li>CPU collisionless particle reference</li>
+                            <li>NVIDIA Warp GPU particle reference</li>
+                            <li>CPU/GPU trajectory cross-check</li>
+                            <li>Same-device GPU repeatability</li>
+                        </ul>
+                    </article>
 
-<article class="card engineering-status-card">
-    <span class="product-kicker">In development</span>
-    <h3>Particle, GPU, and data foundations</h3>
-    <ul class="check-list">
-        <li>Analytical electron trajectory and wall-collection checks</li>
-        <li>CPU/GPU cross-check methodology</li>
-        <li>NVIDIA Warp particle implementation</li>
-        <li>Xe collision physics and energy-dependent cross sections</li>
-        <li>Experiment-data schema and provenance</li>
-        <li>Three-dimensional thermal FEM</li>
-    </ul>
-</article>
+                    <article class="card engineering-status-card">
+                        <span class="product-kicker">In development</span>
+                        <h3>Collisional and coupled particle physics</h3>
+                        <ul class="check-list">
+                            <li>Xe elastic collisions</li>
+                            <li>CPU/GPU collision cross-check</li>
+                            <li>Energy-dependent Xe cross sections</li>
+                            <li>Ionization and excitation</li>
+                            <li>Space-charge coupling</li>
+                            <li>Experiment-data schema and provenance</li>
+                            <li>Three-dimensional thermal FEM</li>
+                        </ul>
+                    </article>
 
                     <article class="card engineering-status-card">
                         <span class="product-kicker">Future</span>
@@ -1170,6 +1175,16 @@
                             <li>Customer-specific engineering configurations</li>
                         </ul>
                     </article>
+                </div>
+
+                <div class="success-criterion particle-verification-note">
+                    <h3>Collisionless particle verification status</h3>
+                    <p>
+                        Collisionless electron trajectories have been independently implemented on CPU and NVIDIA Warp GPU and cross-verified against an analytical reference on the tested RTX 5090 platform.
+                    </p>
+                    <p>
+                        This result is limited to the tested collisionless trajectory regime. Xe collisions, collision cross-verification, energy-dependent cross sections, ionization, excitation, and space-charge coupling remain under development.
+                    </p>
                 </div>
 
                 <div class="metric-row engineering-metrics">
@@ -1199,6 +1214,8 @@
                             <li>Convergence and energy-balance evidence</li>
                             <li>Document-based COMSOL current comparison</li>
                             <li>Electrostatic potential and electric-field profiles</li>
+                            <li>Collisionless analytical / CPU / GPU trajectory comparison</li>
+                            <li>Same-device GPU repeatability evidence</li>
                             <li>Version provenance, source hashes, and result classification</li>
                         </ul>
                     </div>
@@ -1215,7 +1232,7 @@
                 </div>
 
                 <div class="warning-note">
-                    The COMSOL comparison is a document-based regression, not experimental validation. Space charge, Xe collisions, and self-consistent plasma physics are not yet part of the verified electrostatics foundation.
+                    The COMSOL comparison is a document-based regression, not experimental validation. The verified CPU/GPU particle result covers collisionless trajectories on the tested RTX 5090 platform; it does not cover collisional transport, ionization, excitation, space-charge effects, or self-consistent plasma behavior.
                 </div>
             </div>
         </section>
